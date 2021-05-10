@@ -52,3 +52,5 @@ Mage eyes focus on harnessing the powers of their eyestalks. This caste of behol
 v1.0.0 Took out some logic around redefining some AI rules for talent usage because it was breaking this from loading and breaking other add ons as well. Made Temporal Gaze thralls so that you can't switch and control them because that was causing errors too.
 
 v1.0.1 Fixed and issue that caused bump attacks to error in conjunction with other addons.
+
+v1.0.2 Fix Channel Mastery to correctly randomly use known masteries. Add sounds for Frost Laser and Lightning Laser.

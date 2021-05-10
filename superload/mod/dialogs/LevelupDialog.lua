@@ -18,7 +18,7 @@ function _M:learnType(tt, v)
 That means there's %d more %s to go!
 
 Perhaps it's time to refuel by dining out at one of those lovely Shaloren restaurants... or what was it they call them here in Maj'Eyal, was it "libraries"? "Magic item shops", or something like that? Who cares, it's all the same deliciousness...
-							]]):format(string.ordinal(req), to_go, (to_go==1 and "stage" or "stages")), 400)
+]]):format(string.ordinal(req), to_go, (to_go==1 and "stage" or "stages")), 400)
 					return
 				end
 			end

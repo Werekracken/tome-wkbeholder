@@ -51,10 +51,8 @@ function getTentacle(self)
 			cnt=cnt+1
 		end
 		if cnt>0 then
-			local damtype, id = rng.table(possible_types)
-			combat.burst_on_hit = { [damtype] = t.getDamage(self, t) }
-			local damtype2, id2 = rng.table(possible_types)
-			combat.burst_on_crit = { [damtype2] = t.getDamageCrit(self, t) }
+			combat.burst_on_hit = { [rng.table(possible_types)] = t.getDamage(self, t) }
+			combat.burst_on_crit = { [rng.table(possible_types)] = t.getDamageCrit(self, t) }
 		end
 	end
 	return combat
