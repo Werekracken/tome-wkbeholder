@@ -143,7 +143,7 @@ newTalent{
 			-- end
 		-- end
 
---		game:playSoundNear(self, "talents/fire")
+		game:playSoundNear(self, "talents/ice")
 		--self:setEffect(self.EFF_DRAINED_EYESTALKS, 10, {power=1})
 		return true
 	end,
