@@ -1,8 +1,8 @@
 long_name = "Werekracken's Beholder Fork"
 short_name = "wkbeholder"
 for_module = "tome"
-version = { 1, 0, 0 }
-addon_version = {1,7,2}
+version = { 1, 7, 2 }
+addon_version = {1,0,1}
 weight = 100
 author = {"Werekracken"}
 tags = {"Beholder", "Class", "Race", "Monster", "Eyes", "Lasers", "Tentacles"}
@@ -10,6 +10,8 @@ homepage = "https://te4.org/user/102798/addons"
 description = [[This addon is a fork of the Beholder (Eye Fix) (https://te4.org/games/addons/tome/beholder-efix), which was a fork of Beholder (Continuation) (https://te4.org/games/addons/tome/beholder-cont), which was a fork of Beholder race/classes (https://te4.org/games/addons/tome/beholder-raceclasses). It's been over a year since Beholder (Eye Fix) was updated last and it's been broken for a while, so here is the third fork.
 
 Adds Beholders as a playable race and the Mage Eye as a Beholder only class and the only class they have access to.
+
+https://github.com/Werekracken/tome-wkbeholder
 
 ## Beholder race
 
@@ -47,6 +49,8 @@ Mage eyes focus on harnessing the powers of their eyestalks. This caste of behol
 ---
 ## Changelog
 v1.0.0 Took out some logic around redefining some AI rules for talent usage because it was breaking this from loading and breaking other add ons as well. Made Temporal Gaze thralls so that you can't switch and control them because that was causing errors too.
+
+v1.0.1 Fixed an issue that caused bump attacks to error in conjunction with other addons.
 ]]
 overload = true
 superload = true
