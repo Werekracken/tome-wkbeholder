@@ -13,31 +13,33 @@ Adds Beholders as a playable race and the Mage Eye as a Beholder only class and 
 
 https://github.com/Werekracken/tome-wkbeholder
 
-## Beholder race
+---
+Beholder race
 
 Beholders resemble floating orbs of flesh with large mouths, a single central eye, and lots of smaller eyestalks on top with deadly magical powers. Instead of gaining category points as they level, they must absorb energy to grow. They have access to special eye beam abilities, but cannot wear most equipment.
 
-- -2 Strength, +2 Dexterity, +0 Constitution, +3 Magic, +4 Willpower, +2 Cunning
-- +10% Lightning, Fire, and Cold resist
-- -20% movement speed
+-2 Strength, +2 Dexterity, +0 Constitution, +3 Magic, +4 Willpower, +2 Cunning
++10% Lightning, Fire, and Cold resist
+-20% movement speed
 
-### Race tree
+Race tree
 
 - race/beholder: Basic abilities common to all Beholders.
 
-## Mage Eye class
+---
+Mage Eye class
 
 Mage eyes focus on harnessing the powers of their eyestalks. This caste of beholder can absorb power from arcane objects.
 
-- +6 Magic, +3 Willpower
++6 Magic, +3 Willpower
 
-### Generic trees
+Generic trees
 
 - spell/aegis
 - spell/divination
 - technique/tentacle-combat: Strike nearby foes with your tentacles
 
-### Class trees
+Class trees
 
 - spell/fire-eye: Flame eye abilities
 - spell/frost-eye: Frost eye abilities
@@ -47,12 +49,11 @@ Mage eyes focus on harnessing the powers of their eyestalks. This caste of behol
 - spell/death-eye (locked): Death eye abilities. You must reach the 5th beholder growth stage to be able to learn this talent tree.
 
 ---
-## Changelog
-v1.0.0 Took out some logic around redefining some AI rules for talent usage because it was breaking this from loading and breaking other add ons as well. Made Temporal Gaze thralls so that you can't switch and control them because that was causing errors too.
-
-v1.0.1 Fixed an issue that caused bump attacks to error in conjunction with other addons.
-
-v1.0.2 Fix Channel Mastery to correctly randomly use known masteries. Add sounds for Frost Laser and Lightning Laser.
+Changelog
+- v1.0.0 Took out some logic around redefining some AI rules for talent usage because it was breaking this from loading and breaking other add ons as well. Made Temporal Gaze thralls so that you can't switch and control them because that was causing errors too.
+- v1.0.1 Fixed an issue that caused bump attacks to error in conjunction with other addons.
+- v1.0.2 Fix Channel Mastery to correctly randomly use known masteries. Add sounds for Frost Laser and Lightning Laser.
+- v1.0.3 Make Beholder playable in Embers of Rage.
 ]]
 overload = true
 superload = true

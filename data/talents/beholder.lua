@@ -1,3 +1,5 @@
+--require "engine.class"
+--local Player = require "mod.class.Player"
 
 newTalent{
 	name = "Beholder",
@@ -314,20 +316,25 @@ newTalent{
 	is_spell=true,
 	activate = function(self, t)
 		--self:setEffect(self.EFF_CLOAK_OF_DECEPTION, 1, {})
-			self.old_faction_cloak = self.faction
+		self.old_faction_cloak = self.faction
+		--local player = self:getPlayer(true)
+		if self.descriptor.world == "Orcs" then
+			self.faction = "kruk-pride"
+		else
 			self.faction = "allied-kingdoms"
-			self.descriptor.fake_race = "Human"
-			self.descriptor.fake_subrace = "Cornac"
-			self.moddable_tile = "human_male"
-			self.moddable_tile_base = "base_higher_01.png"
-			self.moddable_tile_nude = false
-			self.moddable_tile_ornament={}
-			--self.moddable_tile_ornament["male"]="upper_body_13"
-			self.moddable_tile_ornament["male"]="beholder_lower_body_01"
-			self.moddable_tile_ornament["male"]="beholder_upper_body_01"
-			self:updateModdableTile()
-			engine.Map:setViewerFaction(self.faction)
-			return {}
+		end
+		self.descriptor.fake_race = "Human"
+		self.descriptor.fake_subrace = "Cornac"
+		self.moddable_tile = "human_male"
+		self.moddable_tile_base = "base_higher_01.png"
+		self.moddable_tile_nude = false
+		self.moddable_tile_ornament={}
+		--self.moddable_tile_ornament["male"]="upper_body_13"
+		self.moddable_tile_ornament["male"]="beholder_lower_body_01"
+		self.moddable_tile_ornament["male"]="beholder_upper_body_01"
+		self:updateModdableTile()
+		engine.Map:setViewerFaction(self.faction)
+		return {}
 	end,
 	deactivate = function(self, t, p)
 		-- Reset the terrain tile

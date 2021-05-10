@@ -76,7 +76,6 @@ newBirthDescriptor{
 		resolvers.genericlast(function(e) e.faction = "undead" end), --yeah I know lazy
 		default_wilderness = {"playerpop", "shaloren"},
 		starting_zone = "scintillating-caves",
-
 	},
 	random_escort_possibilities = { {"tier1.1", 1, 2}, {"tier1.2", 1, 2}, {"daikara", 1, 2}, {"old-forest", 1, 4}, {"dreadfell", 1, 8}, {"reknor", 1, 2}, },
 	 talents = {
@@ -107,3 +106,74 @@ ActorInventory.equipdolls.beholder = { w=48, h=48, itemframe="ui/equipdoll/itemf
 		NECK = {{weight=14, x=192, y=48, text="topright"}},
 		HEAD = {{weight=15, x=120, y=48, text="topleft"}},
 }}
+
+---------------------------------------------------------
+--                    All Campaigns                    --
+---------------------------------------------------------
+-- Shamelessly copied everything in this section from Frog's Barachi race. Thank you Frogge!
+-- Add beholder to all campaigns
+for i, bdata in ipairs(Birther.birth_descriptor_def.world) do
+	if bdata.descriptor_choices and bdata.descriptor_choices.race then
+		bdata.descriptor_choices.race.Beholder = "allow"
+	end
+end
+
+--superload beholder into special starting scenarios
+local demo_def = getBirthDescriptor("subclass", "Demonologist")
+local doom_def = getBirthDescriptor("subclass", "Doombringer")
+
+if demo_def then
+	local old_start = demo_def.copy.class_start_check
+
+	--quietly masquerades us as a human so we can slip through the (awful and stupid) starting zone checks
+	local function new_start(self)
+		local real_race = self.descriptor.race
+		if real_race == "Beholder" then
+			self.descriptor.race = "Human"
+		end
+		old_start(self)
+		self.descriptor.race = real_race
+	end
+
+	demo_def.copy.class_start_check = new_start
+	doom_def.copy.class_start_check = new_start
+end
+
+local writhe_def = getBirthDescriptor("subclass", "Writhing One")
+local coe_def = getBirthDescriptor("subclass", "Cultist of Entropy")
+
+if writhe_def then
+	local old_start = writhe_def.copy.class_start_check
+
+	--quietly masquerades us as a human so we can slip through the (awful and stupid) starting zone checks
+	local function new_start(self)
+		local real_race = self.descriptor.race
+		if real_race == "Beholder" then
+			self.descriptor.race = "Human"
+		end
+		old_start(self)
+		self.descriptor.race = real_race
+	end
+
+	writhe_def.copy.class_start_check = new_start
+	coe_def.copy.class_start_check = new_start
+end
+
+--retrofits beholder support into EoR by (non-destructively) popping in a before_start check
+local orcs_def = getBirthDescriptor("world", "Orcs")
+if orcs_def then
+	local old_start = orcs_def.copy.before_starting_zone
+
+	--are we a beholder? yes? then mess with our start stuff
+	local function new_start(self)
+		if self.descriptor.race == "Beholder" then
+			self.faction = 'kruk-pride'
+			self.default_wilderness = {"playerpop", "orc"}
+			self.starting_zone = "orcs+town-kruk"
+			self.starting_quest = "orcs+kruk-invasion"
+		end
+		if old_start then old_start(self) end
+	end
+
+	orcs_def.copy.before_starting_zone = new_start
+end
