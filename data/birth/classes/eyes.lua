@@ -27,7 +27,7 @@ newBirthDescriptor{
 		"#LIGHT_BLUE# * +6 Magic, +3 Willpower, +0 Cunning",
 		"#GOLD#Life per level:#LIGHT_BLUE# -4",
 	},
-	inc_stats = { mag = 6, wil =3,},
+	inc_stats = { mag=6, wil=3,},
 	not_on_random_boss = true,
 	power_source = {arcane=true},
 	talents_types = {
@@ -42,20 +42,17 @@ newBirthDescriptor{
 		["technique/tentacle-combat"]={true, -.2},
 	},
 	copy_add = {
-	life_rating = -4,
-	mana_regen = 0.1,
-	mana_rating = 2,},
-	copy = {
-		lite = 1,
-		resolvers.equip{ id=true, {type="jewelry", subtype="ring",  autoreq=true, ego_chance=100}, },
-		resolvers.equip{ id=true, {type="jewelry", subtype="ring",  autoreq=true, ego_chance=100}, },
-		resolvers.inscription("RUNE:_MANASURGE", {cooldown=25, dur=10, mana=620}),
-		resolvers.inscription("RUNE:_SHIELDING", {cooldown=14, dur=5, power=100}),
-		--resolvers.inscription("INFUSION:_WILD", {cooldown=12, what={physical=true}, dur=4, power=14}),
-		resolvers.inscription("RUNE:_PHASE_DOOR", {cooldown=7, range=10, dur=5, power=15}),
-		starting_quest = "starter-zones",
-		starting_intro = "beholder",
+		life_rating = -4,
+		mana_regen = 0.1,
+		mana_rating = 2,
 	},
+	talents = {
+		T_FLAME_LASER = 1,
+		T_FROST_LASER = 1,
+		T_LIGHTNING_LASER = 1,
+		T_ARMOUR_TRAINING = 2,
+	},
+	resolvers.inscription("RUNE:_MANASURGE", {cooldown=25, dur=10, mana=620}),
 }
 
 --Gauth, Gouger, Armored
@@ -89,19 +86,14 @@ newBirthDescriptor{
 
 	},
 	copy_add = {
-	life_rating = 1,
-	mana_regen = 0.1,
-	mana_rating = 2,},
-	copy = {
-		resolvers.equip{ id=true, {type="jewelry", subtype="ring",  autoreq=true, ego_chance=100}, },
-		resolvers.equip{ id=true, {type="jewelry", subtype="ring",  autoreq=true, ego_chance=100}, },
-		resolvers.inscription("RUNE:_MANASURGE", {cooldown=25, dur=10, mana=620}),
-		resolvers.inscription("RUNE:_SHIELDING", {cooldown=14, dur=5, power=100}),
-		resolvers.inscription("INFUSION:_WILD", {cooldown=12, what={physical=true}, dur=4, power=14}),
-		starting_quest = "mage-eye-beholder-start",
-		starting_intro = "beholder",
+		life_rating = 1,
+		mana_regen = 0.1,
+		mana_rating = 2,
 	},
-	 talents = {
-		T_MAGEEYE_DEVOUR = 1,
-	 },
+	talents = {
+		T_FLAME_LASER = 1,
+		T_FROST_LASER = 1,
+		T_LIGHTNING_LASER = 1,
+		T_ARMOUR_TRAINING = 2,
+	},
 }

@@ -32,23 +32,22 @@ desc = function(self, who)
 	end
 	if who.growth_stage == 2 then
 		desc[#desc+1] = ("\nNeeded for next level: #LIGHT_GREEN#%d#WHITE#."):format(who.growth_curve[2])
-		desc[#desc+1] = "\nCurrent form bonuses: #GOLD#+1 life rating(retroactive), +10% armor hardiness, +3 armor, +20% blindness resistance, +50 max air, +10% movement speed#WHITE#."
+		desc[#desc+1] = "\nCurrent form bonuses: #GOLD#+1 life rating(retroactive), +10% armor hardiness, +3 armor, +20% blindness resistance, +50 max air, +10% movement speed, +2 infravision#WHITE#."
 	end
 	if who.growth_stage == 3 then
 		desc[#desc+1] = ("\nNeeded for next level: #LIGHT_GREEN#%d#WHITE#."):format(who.growth_curve[3])
-		desc[#desc+1] = "\nCurrent form bonuses: #GOLD#+2 life rating(retroactive), +20% armor hardiness, +6 armor, +40% blindness resistance, +100 max air, +20% movement speed#WHITE#."
-		desc[#desc+1] = "\t#GOLD#+1 class points. Tribeam tree available#WHITE#."
+		desc[#desc+1] = "\nCurrent form bonuses: #GOLD#+2 life rating(retroactive), +20% armor hardiness, +6 armor, +40% blindness resistance, +100 max air, +20% movement speed, +4 infravision#WHITE#."
+		desc[#desc+1] = "\n#GOLD#+1 class points."
 	end
 	if who.growth_stage == 4 then
 		desc[#desc+1] = ("\nNeeded for next level: #LIGHT_GREEN#%d#WHITE#."):format(who.growth_curve[4])
-		desc[#desc+1] = "\nCurrent form bonuses: #GOLD#+3 life rating(retroactive), +30% armor hardiness, +9 armor, +60% blindness resistance, +150 max air, +30% movement speed#WHITE#."
-		desc[#desc+1] = "\t#GOLD#+1 class points. Tribeam tree available#WHITE#."
+		desc[#desc+1] = "\nCurrent form bonuses: #GOLD#+3 life rating(retroactive), +30% armor hardiness, +9 armor, +60% blindness resistance, +150 max air, +30% movement speed, +6 infravision#WHITE#."
+		desc[#desc+1] = "\n#GOLD#+1 class points."
 	end
 	if who.growth_stage == 5 then
 		desc[#desc+1] = "\nYou have acquired all the magical power you need."
-		desc[#desc+1] = "\nCurrent form bonuses: #GOLD#+4 life rating(retroactive), +40% armor hardiness, +12 armor, +80% blindness resistance, underwater breathing, +35% movement speed#WHITE#."
-		desc[#desc+1] = "\n\t\t #GOLD#+Levitation and avoid pressure traps#WHITE#."
-		desc[#desc+1] = "\t#GOLD#+2 class points. Deathray and Tribeam trees available#WHITE#."
+		desc[#desc+1] = "\nCurrent form bonuses: #GOLD#+4 life rating(retroactive), +40% armor hardiness, +12 armor, +80% blindness resistance, underwater breathing, +35% movement speed, +8 infravision#WHITE#."
+		desc[#desc+1] = "\n#GOLD#+2 class points."
 	end
 	return table.concat(desc, "\n")
 end
@@ -65,16 +64,8 @@ on_grant = function(self, who, status, sub)
 	who.add_mos = {{image="player/beholder/"..(who.true_moddable_tile_base), display_h=.75,display_w=.75, display_y=.25, display_x=.15}}
 	game.level.map:updateMap(who.x, who.y)
 	who:updateModdableTile()
-	--who:grantQuest("starter-zones")
-	who:learnTalent(who.T_MAGEEYE_DEVOUR, true)
-	who:learnTalent(who.T_BEHOLDER_CLOAKING, true)
-	who:learnTalent(who.T_USE_TENTACLES, true)
-	-- if who:knowTalent(who.T_TENTACLE_MASTERY) then
-		-- who:attr("unused_generics",1)
-	-- else
-		-- who:learnTalent(who.T_TENTACLE_MASTERY, true)
-	-- end
-	who:learnTalent(who.T_STAMINA_POOL, true)
+
+	--who:learnTalent(who.T_STAMINA_POOL, true)
 	if who.inven[who["INVEN_FEET"]] then
 		who.inven[who["INVEN_FEET"]] = nil
 	end

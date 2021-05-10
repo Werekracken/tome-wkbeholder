@@ -385,7 +385,7 @@ newTalent{
 	--end,
 	is_spell=true,
 	action = function(self, t)
-		local d d = self:showInventory("Drain which item?", self:getInven("INVEN"), function(o) return o.power_source and o.power_source.arcane and o.material_level and (o.material_level>=self.growth_stage or o.unique or o.rare) end, function(o, item)
+		local d d = self:showInventory("Drain which item?", self:getInven("INVEN"), function(o) return o.power_source and o.power_source.arcane and o.material_level and (o.material_level>=self.growth_stage or o.unique or o.rare) and not o.is_tinker end, function(o, item)
 
 			local amt = 1 	--t.get_growth_points(self, t,o.material_level,unique)
 			if o.material_level==self.growth_stage then

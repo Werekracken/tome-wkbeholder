@@ -15,12 +15,11 @@ newBirthDescriptor{
 		},
 		class =
 		{
-			__ALL__ = "disallow",
+			Wilder = "disallow",
 			Eyes = "allow",
 		},
 		subclass =
 		{
-			__ALL__ = "disallow",
 			["Mage Eye"] = "allow",
 		},
 	},
@@ -32,14 +31,13 @@ newBirthDescriptor{
 	desc = {
 		"Beholders resemble floating orbs of flesh with large mouths, a single central eye, and lots of smaller eyestalks on top with deadly magical powers.",
 		"Instead of gaining category points as they level, they must absorb energy to grow.",
-		"They have access to special eye beam abilities, but cannot wear most equipment:",
-		--"- levitation",
-		"- 10 infravision",
+		"They have access to special eye abilities, but cannot wear most equipment.",
 		"#GOLD#Stat modifiers:",
 		"#LIGHT_BLUE# * -2 Strength, +2 Dexterity, +0 Constitution",
 		"#LIGHT_BLUE# * +3 Magic, +4 Willpower, +2 Cunning",
 		"#LIGHT_BLUE# * +10% Lightning, Fire, and Cold resist",
 		"#LIGHT_BLUE# * -20% movement speed",
+		"#LIGHT_BLUE# * levitation",
 		"#GOLD#Life per level:#LIGHT_BLUE# 13",
 	},
 	inc_stats = {str =-2, cun = 2, dex = 2, mag = 3, wil =4,},
@@ -48,7 +46,6 @@ newBirthDescriptor{
 		["race/beholder"] ={true, 0.1},
 	},
 	copy = {
-		infravision = 10,
 		life_rating = 13,
 		growth_points = 0,
 		has_central_eye = true, --can check this to fix some lua errors
@@ -62,11 +59,10 @@ newBirthDescriptor{
 			{type="gem",},
 			{type="gem",},
 			{type="gem",},
+			{defined="ORB_SCRYING"},
 		},
 		resists = { [DamageType.LIGHTNING] = 10, [DamageType.FIRE] = 10, [DamageType.COLD] = 10, },
 		equipdoll = "beholder",
-		resolvers.inventory{id=true,{defined="ORB_SCRYING"} },
-		resolvers.equip{ id=true, {defined="BEHOLDER_SOCKET_RING"} },
 		moddable_tile = "beholder",
 		moddable_tile_base = "beholder_nymph.png",
 		true_moddable_tile_base = "beholder_nymph.png",
@@ -76,18 +72,27 @@ newBirthDescriptor{
 		resolvers.genericlast(function(e) e.faction = "undead" end), --yeah I know lazy
 		default_wilderness = {"playerpop", "shaloren"},
 		starting_zone = "scintillating-caves",
+		levitation = 1,
+
+		resolvers.equip{ id=true,
+			{defined="BEHOLDER_SOCKET_RING"},
+			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=100},
+			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=100},
+		},
+		resolvers.inscription("RUNE:_SHIELDING", {cooldown=14, dur=5, power=130}, 1),
+		resolvers.inscription("RUNE:_SHATTER_AFFLICTIONS", {cooldown=18, shield=50}, 2),
+		resolvers.inscription("RUNE:_BLINK", {cooldown=18, power=10, range=4,}, 3),
+
+		starting_quest = "starter-zones",
+		starting_intro = "beholder",
+	},
+	talents = {
+		T_MAGEEYE_DEVOUR = 1,
+		T_BEHOLDER_CLOAKING = 1,
+		T_USE_TENTACLES = 1,
+		T_TENTACLE_MASTERY = 1,
 	},
 	random_escort_possibilities = { {"tier1.1", 1, 2}, {"tier1.2", 1, 2}, {"daikara", 1, 2}, {"old-forest", 1, 4}, {"dreadfell", 1, 8}, {"reknor", 1, 2}, },
-	 talents = {
---		T_BEHOLDER_CLOAKING = 1,
-		T_FLAME_LASER = 1,
-		T_FROST_LASER = 1,
-		T_LIGHTNING_LASER = 1,
-		T_ARMOUR_TRAINING = 2,
-		T_TENTACLE_MASTERY = 1,
---		T_USE_TENTACLES = 1,
---		T_STAMINA_POOL = 1
-	 },
 	body = {FINGER = 8,LITE=1,HEAD=1,NECK=1,TOOL=1,MAINHAND=1,OFFHAND=1,FEET="0",BODY="0",QUIVER="0",BELT="0",HANDS="0",CLOAK="0"},
 }
 

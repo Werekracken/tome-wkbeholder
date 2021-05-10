@@ -265,9 +265,9 @@ newTalent{
 		local spell_failure = t.getSpellFailure(self,t)
 		return ([[Project a size %d cone of anti-magic energy from your central eye that interrupts spellcasting, causing up to %d manaburn damage per turn to all enemy targets in the area as you drain mana, vim, paradox, or positive and negative energy, and an additional %d manaburn damage to any target casting a spell. Spells affected will suffer a %d%% chance to be disrupted, and they will also have their cooldown multiplied by %d%%.
 
-			The beholder will regenerate %0.2f mana for each enemy and ability affected in this fashion.
+		The beholder will regenerate %0.2f mana for each enemy and ability affected in this fashion.
 
-			The gaze will persist (in the direction you are facing) only so long as your central eye remains open. When closing your central eye, the gaze will be inactive until it opens again. You can only fire this attack in one of the basic 8 directions of movement. Damage will increase with Spellpower.
+		The gaze will persist (in the direction you are facing) only so long as your central eye remains open. When closing your central eye, the gaze will be inactive until it opens again. You can only fire this attack in one of the basic 8 directions of movement. Damage will increase with Spellpower.
 
 		Each point in central eye talents also reduces mana lost from manaburn by 2%%.]]):
 		format(radius, dam_base, dam_retribution, spell_failure, cooldown_penalty, mana_gain)
@@ -479,8 +479,6 @@ newTalent{
 		Draining Gaze: The gaze will silence targets for %d turns.
 
 		Each point in central eye talents also reduces mana lost from manaburn by 2%%.]]):format(dur, eye_cooldown, silence_dur, stun_resist_pen, projectile_slow)
-		--The damage will increase with your Spellpower and the use of a telekinetically-wielded gem or mindstar as a focus will improve the effects considerably.
-
 		-- Took this next line out of the description because there is no stand alone Paralyzing Gaze. WK 2021/05/08
 			--Paralyzing Gaze: Targets within the gaze have their global speed as well as their stun/confusion/sleep/paralysis resistances reduced by %d%%. Also, all projectiles in the area will be slowed by %d%%.
 	end,

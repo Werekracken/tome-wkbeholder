@@ -138,6 +138,7 @@ mage_stage_2 = function(self)
 	--self:setTalentTypeMastery("spell/frost-eye", self:getTalentTypeMastery("spell/frost-eye") + 0.1)
 	--self:setTalentTypeMastery("spell/lightning-eye", self:getTalentTypeMastery("spell/lightning-eye") + 0.1)
 	self:attr("blind_immune",.2)
+	self:attr("infravision",2)
 	self:attr("movement_speed",.1)
 	self:attr("max_air",50)
 	self.air = self.air+50
@@ -161,6 +162,7 @@ mage_stage_3 = function(self)
 	--self:setTalentTypeMastery("spell/frost-eye", self:getTalentTypeMastery("spell/frost-eye") + 0.1)
 	--self:setTalentTypeMastery("spell/lightning-eye", self:getTalentTypeMastery("spell/lightning-eye") + 0.1)
 	self:attr("blind_immune",.2)
+	self:attr("infravision",2)
 	self:attr("movement_speed",.1)
 	self:attr("max_air",50)
 	self.air = self.air+50
@@ -191,6 +193,7 @@ end
 
 mage_stage_4 = function(self)
 	self:attr("blind_immune",.2)
+	self:attr("infravision",2)
 	self:attr("movement_speed",.1)
 	self:attr("max_air",50)
 	self.air = self.air+50
@@ -213,6 +216,7 @@ mage_stage_5 = function(self)
 	--self:setTalentTypeMastery("spell/frost-eye", self:getTalentTypeMastery("spell/frost-eye") + 0.1)
 	--self:setTalentTypeMastery("spell/lightning-eye", self:getTalentTypeMastery("spell/lightning-eye") + 0.1)
 	self:attr("blind_immune",.2)
+	self:attr("infravision",2)
 	self:attr("movement_speed",.05)
 	self:attr("no_breath",1)
 	self.air = self.max_air
@@ -224,7 +228,6 @@ mage_stage_5 = function(self)
 --	self.moddable_tile_base = "beholder_base_mage_evolved.png"
 	self.closed_moddable_tile_base = "beholder_base_mage_evolved_closedeye.png"
 	self:attr("growth_stage",1)
-	self:attr("levitation",1)
 	self:attr("avoid_pressure_traps",1)
 	--self:updateModdableTile()
 	self:attr("unused_talents",1)

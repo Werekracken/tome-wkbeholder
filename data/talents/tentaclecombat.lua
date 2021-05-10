@@ -64,7 +64,7 @@ newTalent{
 	points = 1,
 	mode = "sustained",
 	cooldown = 0,
-	sustain_psi = 0,
+	--sustain_psi = 0,
 	range = 1,
 	direct_hit = true,
 	no_energy = true,

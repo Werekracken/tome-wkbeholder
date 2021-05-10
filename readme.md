@@ -53,3 +53,4 @@ Mage eyes focus on harnessing the powers of their eyestalks. This caste of behol
 - v1.0.1 Fixed and issue that caused bump attacks to error in conjunction with other addons.
 - v1.0.2 Fix Channel Mastery to correctly randomly use known masteries. Add sounds for Frost Laser and Lightning Laser.
 - v1.0.3 Make Beholder playable in Embers of Rage.
+- v1.0.4 Make all classes (except wilders) available to the Beholder race. Make beholders levitate by default instead of at stage 5 growth. Changed them from starting with 10 infravision to getting +2 infravision for each growth stage.
