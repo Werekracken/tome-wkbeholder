@@ -280,9 +280,8 @@ newTalent{
 	require = Talents.main_env.spells_req2,
 	points = 5,
 	mana = 25,
-	--cooldown = function(self, t) return math.ceil(self:combatTalentLimit(t, 10, 47, 35)) end, -- Limit >10
-	cooldown = 50,
-	getduration = function(self) return math.floor(self:combatStatScale("wil", 25, 100)) end,
+	cooldown = function(self, t) return math.ceil(self:combatTalentLimit(t, 10, 45, 25, false, 1.0)) end, -- Limit >10
+	getduration = function(self) return math.floor(self:combatStatScale("wil", 5, 14)) end,
 	range = 4,
 	no_npc_use = true,
 	requires_target = true,
@@ -320,9 +319,6 @@ newTalent{
 		self:project(tg, x, y, function(px, py)
 			local target = game.level.map(px, py, Map.ACTOR)
 			if target:canBe("instakill") then
-				--target:takeHit(1, self)
-				--target:takeHit(1, self)
-				--target:takeHit(1, self)
 				target:setEffect(target.EFF_TEMPORAL_SWAP, t.getduration(self), {src=self})
 			else
 				game.logSeen(target, "%s resists the temporal swap!", target.name:capitalize())
@@ -337,7 +333,7 @@ newTalent{
 		fake.rank = 3.2; local rt5, rc5 = self.TextRank(fake)
 		fake.rank = 3.5; local rt7, rc7 = self.TextRank(fake)
 		return ([[Gaze across alternate timelines to find a version of your target that is allied to you, then swap them through to this reality for %s turns (based on your Willpower).
-		When the effect ends, the temporal waveform collapses, sending your ally safely back to their own timeline and returning your enemy to this timeline.
+		When the effect ends the temporal waveform collapses, sending your ally safely back to their own timeline and returning your enemy to this timeline.
 		Targets with ranks at or above rare must be below 80%% of their maximum life to be replaced.
 		This effect cannot be saved against but checks instakill immunity.
 
