@@ -2,7 +2,7 @@ long_name = "Werekracken's Beholder Fork"
 short_name = "wkbeholder"
 for_module = "tome"
 version = { 1, 7, 2 }
-addon_version = {1,0,4}
+addon_version = {1,7,3}
 weight = 100
 author = {"Werekracken"}
 tags = {"Beholder", "Class", "Race", "Monster", "Eyes", "Lasers", "Tentacles"}
@@ -55,6 +55,7 @@ Changelog
 - v1.0.2 Fix Channel Mastery to correctly randomly use known masteries. Add sounds for Frost Laser and Lightning Laser.
 - v1.0.3 Make Beholder playable in Embers of Rage.
 - v1.0.4 Make all classes (except wilders) available to the Beholder race. Make beholders levitate by default instead of at stage 5 growth. Changed them from starting with 10 infravision to getting +2 infravision for each growth stage.
+- v1.7.3 Bumping version number to fix the fact that tome version and addon version got switched up.
 ]]
 overload = true
 superload = true
