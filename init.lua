@@ -2,14 +2,14 @@ long_name = "Werekracken's Beholder Fork"
 short_name = "wkbeholder"
 for_module = "tome"
 version = { 1, 7, 2 }
-addon_version = {1,7,3}
+addon_version = {1,7,4}
 weight = 100
 author = {"Werekracken"}
 tags = {"Beholder", "Class", "Race", "Monster", "Eyes", "Lasers", "Tentacles"}
 homepage = "https://te4.org/user/102798/addons"
 description = [[This addon is a fork of the Beholder (Eye Fix) (https://te4.org/games/addons/tome/beholder-efix), which was a fork of Beholder (Continuation) (https://te4.org/games/addons/tome/beholder-cont), which was a fork of Beholder race/classes (https://te4.org/games/addons/tome/beholder-raceclasses). It's been over a year since Beholder (Eye Fix) was updated last and it's been broken for a while, so here is the third fork.
 
-Adds Beholders as a playable race and the Mage Eye as a Beholder only class and the only class they have access to.
+Adds Beholders as a playable race and the Mage Eye as a Beholder only class.
 
 https://github.com/Werekracken/tome-wkbeholder
 
@@ -56,6 +56,7 @@ Changelog
 - v1.0.3 Make Beholder playable in Embers of Rage.
 - v1.0.4 Make all classes (except wilders) available to the Beholder race. Make beholders levitate by default instead of at stage 5 growth. Changed them from starting with 10 infravision to getting +2 infravision for each growth stage.
 - v1.7.3 Bumping version number to fix the fact that tome version and addon version got switched up.
+- v1.7.4 Change Temporal Gaze to not kill the target when it's over and to not follow you around. Reduce cooldown and duration of Temporal Gaze. Fix talent cooldown reduction while beholder addon is active (like with Windtouched Speed).
 ]]
 overload = true
 superload = true
