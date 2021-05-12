@@ -85,10 +85,26 @@ function _M:getTalentCooldown(t)
 
 	if self.talent_cd_reduction[t.id] then cd = cd - self.talent_cd_reduction[t.id] end
 	if self.talent_cd_reduction.all then cd = cd - self.talent_cd_reduction.all end
+	if self.talent_cd_reduction.allpct then cd = cd - math.ceil(self.talent_cd_reduction.allpct * cd) end
+
+	if self:attr("arcane_cooldown_divide") and (t.type[1] == "spell/arcane" or t.type[1] == "spell/aether") then
+		cd = math.ceil(cd / self.arcane_cooldown_divide)
+	end
 
 	local eff = self:hasEffect(self.EFF_BURNING_HEX)
 	if eff and not self:attr("talent_reuse") then
 		cd = 1 + cd * eff.power
+	end
+
+	--terrified cooldown increase effect
+	local eff = self:hasEffect(self.EFF_TERRIFIED)
+	if eff and not self:attr("talent_reuse") and not (t.fixed_cooldown or base) then
+		cd = math.ceil(cd * (1 + eff.cooldownPower))
+	end
+
+	local p = self:isTalentActive(self.T_MATRIX)
+	if p and p.talent == t.id then
+		cd = math.floor(cd * (1 - self:callTalent(self.T_MATRIX, "getPower")))
 	end
 
 	if t.is_spell then
