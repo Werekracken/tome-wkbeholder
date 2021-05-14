@@ -66,7 +66,8 @@ newEffect{
 	activate = function(self, eff)
 		if self:knowTalent(self.T_BEHOLDER_INVIGORATE) then eff.spower = self:callTalent(self.T_BEHOLDER_INVIGORATE, "getSpellPowerBoost") end
 		eff.tmpid2 = self:addTemporaryValue("combat_spellpower", eff.spower)
-		if not self.descriptor.fake_race then
+		-- neka_qol07 is the Nekarcos's Quality of Life 07: Visible Size Categories addon
+		if not self.descriptor.fake_race and not game:isAddonActive("neka_qol07") then
 			self:removeAllMOs()
 			self.image="player/human_male/base_shadow_01.png"
 			if self.growth_stage>=1 and self.growth_stage<3 then
@@ -79,11 +80,15 @@ newEffect{
 				self.add_mos = {{image="player/beholder/"..(self.closed_moddable_tile_base),  display_h=1.5,display_w=1.5, display_y=-.5, display_x=-.25}}
 			end
 			game.level.map:updateMap(self.x, self.y)
+		elseif not self.descriptor.fake_race then
+			self.add_mos = {{image="player/beholder/"..(self.closed_moddable_tile_base)}}
 		end
+		self:updateModdableTile()
 	end,
 	deactivate = function(self, eff)
 		self:removeTemporaryValue("combat_spellpower", eff.tmpid2)
-		if not self.descriptor.fake_race then
+		-- neka_qol07 is the Nekarcos's Quality of Life 07: Visible Size Categories addon
+		if not self.descriptor.fake_race and not game:isAddonActive("neka_qol07") then
 			self:removeAllMOs()
 			self.image="player/human_male/base_shadow_01.png"
 			if self.growth_stage>=1 and self.growth_stage<3 then
@@ -96,7 +101,13 @@ newEffect{
 				self.add_mos = {{image="player/beholder/"..(self.true_moddable_tile_base), display_h=1.5,display_w=1.5, display_y=-.5, display_x=-.25}}
 			end
 			game.level.map:updateMap(self.x, self.y)
+		elseif not self.descriptor.fake_race then
+			self:removeAllMOs()
+			self.image="player/human_male/base_shadow_01.png"
+			self.add_mos = {{image="player/beholder/"..(self.true_moddable_tile_base)}}
+			game.level.map:updateMap(self.x, self.y)
 		end
+		self:updateModdableTile()
 	end,
 	on_merge = function(self, old_eff, new_eff)
 		old_eff.dur = new_eff.dur

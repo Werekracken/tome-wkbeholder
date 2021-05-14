@@ -354,14 +354,19 @@ newTalent{
 			tile_to_use=self.closed_moddable_tile_base
 		end
 
-		if self.growth_stage>=1 and self.growth_stage<3 then
-			self.add_mos = {{image="player/beholder/"..(tile_to_use), display_h=.75,display_w=.75, display_y=.25, display_x=.15}}
-		end
-		if self.growth_stage>=3 and self.growth_stage<5 then
-			self.add_mos = {{image="player/beholder/"..(tile_to_use), display_h=1,display_w=1, display_y=0, display_x=0}}
-		end
-		if self.growth_stage>=5 then
-			self.add_mos = {{image="player/beholder/"..(tile_to_use), display_h=1.5,display_w=1.5, display_y=-.5, display_x=-.25}}
+		-- neka_qol07 is the Nekarcos's Quality of Life 07: Visible Size Categories addon
+		if not game:isAddonActive("neka_qol07") then
+			if self.growth_stage>=1 and self.growth_stage<3 then
+				self.add_mos = {{image="player/beholder/"..(tile_to_use), display_h=.75,display_w=.75, display_y=.25, display_x=.15}}
+			end
+			if self.growth_stage>=3 and self.growth_stage<5 then
+				self.add_mos = {{image="player/beholder/"..(tile_to_use), display_h=1,display_w=1, display_y=0, display_x=0}}
+			end
+			if self.growth_stage>=5 then
+				self.add_mos = {{image="player/beholder/"..(tile_to_use), display_h=1.5,display_w=1.5, display_y=-.5, display_x=-.25}}
+			end
+		else
+			self.add_mos = {{image="player/beholder/"..(tile_to_use)}}
 		end
 		game.level.map:updateMap(self.x, self.y)
 		self:updateModdableTile()
@@ -420,6 +425,7 @@ newTalent{
 			game.log(text)
 			self.changed = true
 			d.used_talent = true
+			self:updateModdableTile()
 		end)
 
 		return true

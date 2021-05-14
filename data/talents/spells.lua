@@ -174,6 +174,7 @@ mage_stage_3 = function(self)
 	self.moddable_tile_base = "beholder_base_mage.png"
 	self.closed_moddable_tile_base = "beholder_base_mage_closedeye.png"
 	self:attr("growth_stage",1)
+	self:attr("size_category",1)
 --	self:updateModdableTile()
 	self:attr("unused_talents",1)
 	self.moddable_tile = nil--"beholder"
@@ -182,7 +183,12 @@ mage_stage_3 = function(self)
 	self.moddable_tile_ornament=nil
 	self:removeAllMOs()
 	self.image="player/human_male/base_shadow_01.png"
-	if not self.sustain_talents.T_BEHOLDER_CLOAKING then self.add_mos = {{image="player/beholder/beholder_base_mage.png",display_h=1,display_w=1, display_y=0, display_x=0}} end
+	-- neka_qol07 is the Nekarcos's Quality of Life 07: Visible Size Categories addon
+	if not self.sustain_talents.T_BEHOLDER_CLOAKING and not game:isAddonActive("neka_qol07") then
+		self.add_mos = {{image="player/beholder/beholder_base_mage.png",display_h=1,display_w=1, display_y=0, display_x=0}}
+	elseif not self.sustain_talents.T_BEHOLDER_CLOAKING then
+		self.add_mos = {{image="player/beholder/beholder_base_mage.png"}}
+	end
 	game.level.map:updateMap(self.x, self.y)
 	--self:learnTalentType("spell/tri-beam", false)
 	--self:setTalentTypeMastery("spell/tri-beam", 1.3)
@@ -200,6 +206,7 @@ mage_stage_4 = function(self)
 	self:attr("combat_armor",3)
 	self:attr("life_rating",1)
 	self:attr("growth_stage",1)
+	self:attr("size_category",1)
 	self:attr("combat_armor_hardiness",10)
 	self.max_life = self.max_life + self.level
 	if not game:hasDialogUp(1) then require("engine.ui.Dialog"):simplePopup("Beholder Growth", "#GOLD#You feel a rush of power as your magical energy increases") end
@@ -228,12 +235,18 @@ mage_stage_5 = function(self)
 --	self.moddable_tile_base = "beholder_base_mage_evolved.png"
 	self.closed_moddable_tile_base = "beholder_base_mage_evolved_closedeye.png"
 	self:attr("growth_stage",1)
+	self:attr("size_category",1)
 	self:attr("avoid_pressure_traps",1)
 	--self:updateModdableTile()
 	self:attr("unused_talents",1)
 	self:removeAllMOs()
 	self.image="player/human_male/base_shadow_01.png"
-	if not self.sustain_talents.T_BEHOLDER_CLOAKING then self.add_mos = {{image="player/beholder/beholder_base_mage_evolved.png",  display_h=1.5,display_w=1.5, display_y=-.5, display_x=-.25}} end
+	-- neka_qol07 is the Nekarcos's Quality of Life 07: Visible Size Categories addon
+	if not self.sustain_talents.T_BEHOLDER_CLOAKING and not game:isAddonActive("neka_qol07") then
+		self.add_mos = {{image="player/beholder/beholder_base_mage_evolved.png",  display_h=1.5,display_w=1.5, display_y=-.5, display_x=-.25}}
+	elseif not self.sustain_talents.T_BEHOLDER_CLOAKING then
+		self.add_mos = {{image="player/beholder/beholder_base_mage_evolved.png"}}
+	end
 	game.level.map:updateMap(self.x, self.y)
 	--self:learnTalentType("spell/death-eye", false)
 	--self:setTalentTypeMastery("spell/death-eye", 1.3)

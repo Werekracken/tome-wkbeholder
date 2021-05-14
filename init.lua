@@ -2,7 +2,7 @@ long_name = "Werekracken's Beholder Fork"
 short_name = "wkbeholder"
 for_module = "tome"
 version = { 1, 7, 2 }
-addon_version = {1,7,4}
+addon_version = {1,7,5}
 weight = 100
 author = {"Werekracken"}
 tags = {"Beholder", "Class", "Race", "Monster", "Eyes", "Lasers", "Tentacles"}
@@ -57,6 +57,7 @@ Changelog
 - v1.0.4 Make all classes (except wilders) available to the Beholder race. Make beholders levitate by default instead of at stage 5 growth. Changed them from starting with 10 infravision to getting +2 infravision for each growth stage.
 - v1.7.3 Bumping version number to fix the fact that tome version and addon version got switched up.
 - v1.7.4 Change Temporal Gaze to not kill the target when it's over and to not follow you around. Reduce cooldown and duration of Temporal Gaze. Fix talent cooldown reduction while beholder addon is active (like with Windtouched Speed).
+- v1.7.5 Make the Mage Eye cosmetic size changes into actual size changes as well. Add handling of Nekarcos's Quality of Life 07: Visible Size Categories addon. Fix instant graphic update on size changes.
 ]]
 overload = true
 superload = true

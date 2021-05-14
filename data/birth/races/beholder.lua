@@ -52,6 +52,7 @@ newBirthDescriptor{
 	 --you always get some as a flag!
 		growth_stage = 1,
 		growth_curve ={3, 6, 12, 20},
+		size_category = 2,
 		mana_rating = 7,
 		movement_speed=.8,
 		random_name_def = "beholder",
