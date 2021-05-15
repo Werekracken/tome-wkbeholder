@@ -16,9 +16,9 @@
 --
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
+
 local ActorInventory = require "engine.interface.ActorInventory"
---local game = require "mod.class.Game"
---local player = require "mod.class.Player"
+
 name = "Crash Landing"
 desc = function(self, who)
 	local desc = {}
@@ -61,7 +61,7 @@ on_grant = function(self, who, status, sub)
 	who.moddable_tile_ornament=nil
 	who:removeAllMOs()
 	who.image="player/human_male/base_shadow_01.png"
-	who.add_mos = {{image="player/beholder/"..(who.true_moddable_tile_base), display_h=.75,display_w=.75, display_y=.25, display_x=.15}}
+	who.add_mos = {{image="player/beholder/"..(who.true_moddable_tile_base)}}
 	game.level.map:updateMap(who.x, who.y)
 	who:updateModdableTile()
 

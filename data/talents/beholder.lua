@@ -213,15 +213,11 @@ newTalent{
 		return {type="ball", range=self:getTalentRange(t), selffire=false, radius=self:getTalentRadius(t), talent=t}
 	end,
 	action = function(self, t)
-		--local tg = {type="ball", range=self:getTalentRange(t), selffire=false, radius=self:getTalentRadius(t)}
 		local tg = self:getTalentTarget(t)
-		--local tx, ty, target = self:getTarget(tg)
 		local tx = self.x
 		local ty = self.y
 		if not tx or not ty then return nil end
 		local _ _, _, _, tx, ty = self:canProject(tg, tx, ty)
-		-- target = game.level.map(tx, ty, Map.ACTOR)
-		-- if target == self then target = nil end
 		local count = t.getSummonCount(self, t)
 		local dur = t.getSummonDuration(self,t)
 		-- Find space
@@ -237,7 +233,6 @@ newTalent{
 				type = "beholder", subtype = "beholder",
 				display = "y",
 				name = "Summoned Beholderkin", color=colors.YELLOW,
-				--resolvers.nice_tile{image="invis.png", add_mos = {{image="npc/beholder_summon.png", display_h=1, display_y=-1}}},
 				image="npc/beholder_summon.png",
 				desc = "Conjured minions of the beholders.",
 
@@ -245,9 +240,7 @@ newTalent{
 
 				rank = 3,
 				life_rating = 8,
-				--life_rating = 1,
 				max_life = resolvers.rngavg(30,50),
-				--max_life = resolvers.rngavg(1,1),
 				max_mana = 100,
 				infravision = 10,
 
@@ -348,26 +341,12 @@ newTalent{
 		self.moddable_tile_ornament=nil
 		--self:updateModdableTile()
 		self:removeAllMOs()
-		self.image="player/human_male/base_shadow_01.png"
 		local tile_to_use =self.true_moddable_tile_base
 		if self:hasEffect(self.EFF_DRAINED_CENTRAL_EYE) then
 			tile_to_use=self.closed_moddable_tile_base
 		end
 
-		-- neka_qol07 is the Nekarcos's Quality of Life 07: Visible Size Categories addon
-		if not game:isAddonActive("neka_qol07") then
-			if self.growth_stage>=1 and self.growth_stage<3 then
-				self.add_mos = {{image="player/beholder/"..(tile_to_use), display_h=.75,display_w=.75, display_y=.25, display_x=.15}}
-			end
-			if self.growth_stage>=3 and self.growth_stage<5 then
-				self.add_mos = {{image="player/beholder/"..(tile_to_use), display_h=1,display_w=1, display_y=0, display_x=0}}
-			end
-			if self.growth_stage>=5 then
-				self.add_mos = {{image="player/beholder/"..(tile_to_use), display_h=1.5,display_w=1.5, display_y=-.5, display_x=-.25}}
-			end
-		else
-			self.add_mos = {{image="player/beholder/"..(tile_to_use)}}
-		end
+		self.add_mos = {{image="player/beholder/"..(tile_to_use)}}
 		game.level.map:updateMap(self.x, self.y)
 		self:updateModdableTile()
 		if self.player then engine.Map:setViewerFaction(self.faction) end

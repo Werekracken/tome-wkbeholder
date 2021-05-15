@@ -56,4 +56,5 @@ Mage eyes focus on harnessing the powers of their eyestalks. This caste of behol
 - v1.0.4 Make all classes (except wilders) available to the Beholder race. Make beholders levitate by default instead of at stage 5 growth. Changed them from starting with 10 infravision to getting +2 infravision for each growth stage.
 - v1.7.3 Bumping version number to fix the fact that tome version and addon version got switched up.
 - v1.7.4 Change Temporal Gaze to not kill the target when it's over and to not follow you around. Reduce cooldown and duration of Temporal Gaze. Fix talent cooldown reduction while beholder addon is active (like with Windtouched Speed).
-- v1.7.5 Make the Mage Eye cosmetic size changes into actual size changes as well. Add handling of Nekarcos's Quality of Life 07: Visible Size Categories addon. Fix instant graphic update on size changes.
+- v1.7.5 Make the Beholder cosmetic size changes into actual size changes as well. Add handling of Nekarcos's Quality of Life 07: Visible Size Categories addon. Fix instant graphic update on size changes.
+- v1.7.6 Take out display size changing with growth. Nekarcos's Quality of Life 07: Visible Size Categories addon does a much better job of doing the same thing.
