@@ -53,19 +53,11 @@ desc = function(self, who)
 end
 
 on_grant = function(self, who, status, sub)
-	--game.log(who.inven_def[1])
-
-	who.moddable_tile = nil--"beholder"
-	who.moddable_tile_base = nil--self.true_moddable_tile_base
-	who.moddable_tile_nude = true
-	who.moddable_tile_ornament=nil
-	who:removeAllMOs()
 	who.image="player/human_male/base_shadow_01.png"
 	who.add_mos = {{image="player/beholder/"..(who.true_moddable_tile_base)}}
 	game.level.map:updateMap(who.x, who.y)
 	who:updateModdableTile()
 
-	--who:learnTalent(who.T_STAMINA_POOL, true)
 	if who.inven[who["INVEN_FEET"]] then
 		who.inven[who["INVEN_FEET"]] = nil
 	end

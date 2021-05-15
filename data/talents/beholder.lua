@@ -320,7 +320,7 @@ newTalent{
 		self.descriptor.fake_subrace = "Cornac"
 		self.moddable_tile = "human_male"
 		self.moddable_tile_base = "base_higher_01.png"
-		self.moddable_tile_nude = false
+		self.moddable_attachement_spots = "race_human"
 		self.moddable_tile_ornament={}
 		--self.moddable_tile_ornament["male"]="upper_body_13"
 		self.moddable_tile_ornament["male"]="beholder_lower_body_01"
@@ -337,9 +337,8 @@ newTalent{
 		self.descriptor.fake_subrace = nil
 		self.moddable_tile = nil--"beholder"
 		self.moddable_tile_base = nil--self.true_moddable_tile_base
-		self.moddable_tile_nude = true
+		self.moddable_attachement_spots = "race_halfling"
 		self.moddable_tile_ornament=nil
-		--self:updateModdableTile()
 		self:removeAllMOs()
 		local tile_to_use =self.true_moddable_tile_base
 		if self:hasEffect(self.EFF_DRAINED_CENTRAL_EYE) then

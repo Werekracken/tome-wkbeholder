@@ -23,6 +23,7 @@ newBirthDescriptor{
 			["Mage Eye"] = "allow",
 		},
 	},
+	moddable_attachement_spots = "race_halfling",
 }
 
 newBirthDescriptor{
@@ -51,7 +52,7 @@ newBirthDescriptor{
 		has_central_eye = true, --can check this to fix some lua errors
 	 --you always get some as a flag!
 		growth_stage = 1,
-		growth_curve ={3, 6, 12, 20},
+		growth_curve ={3, 8, 16, 32},
 		size_category = 2,
 		mana_rating = 7,
 		movement_speed=.8,
@@ -65,11 +66,10 @@ newBirthDescriptor{
 		resists = { [DamageType.LIGHTNING] = 10, [DamageType.FIRE] = 10, [DamageType.COLD] = 10, },
 		equipdoll = "beholder",
 		moddable_tile = "beholder",
-		moddable_tile_base = "beholder_nymph.png",
-		true_moddable_tile_base = "beholder_nymph.png",
-		closed_moddable_tile_base = "beholder_nymph_closedeye.png",
-		image = "player/beholder/beholder_nymph.png",
-		moddable_tile_nude = true,
+		moddable_tile_base = "beholder_phase_1_128.png",
+		true_moddable_tile_base = "beholder_phase_1_128.png",
+		closed_moddable_tile_base = "beholder_phase_1_closedeye_128.png",
+		image = "player/beholder/beholder_phase_1_128.png",
 		resolvers.genericlast(function(e) e.faction = "undead" end), --yeah I know lazy
 		default_wilderness = {"playerpop", "shaloren"},
 		starting_zone = "scintillating-caves",
