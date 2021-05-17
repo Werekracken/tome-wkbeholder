@@ -23,7 +23,6 @@ newBirthDescriptor{
 			["Mage Eye"] = "allow",
 		},
 	},
-	moddable_attachement_spots = "race_halfling",
 }
 
 newBirthDescriptor{
@@ -56,7 +55,7 @@ newBirthDescriptor{
 		size_category = 2,
 		mana_rating = 7,
 		movement_speed=.8,
-		random_name_def = "beholder",
+		random_name_def = "beholder", -- change this to yeek in mage-eye-beholder-start, if yeek here it will show default armor for other races
 		resolvers.inventory{ id=true,
 			{type="gem",},
 			{type="gem",},
@@ -65,11 +64,12 @@ newBirthDescriptor{
 		},
 		resists = { [DamageType.LIGHTNING] = 10, [DamageType.FIRE] = 10, [DamageType.COLD] = 10, },
 		equipdoll = "beholder",
+		moddable_tile_nude = 1,
 		moddable_tile = "beholder",
-		moddable_tile_base = "beholder_phase_1_128.png",
-		true_moddable_tile_base = "beholder_phase_1_128.png",
-		closed_moddable_tile_base = "beholder_phase_1_closedeye_128.png",
-		image = "player/beholder/beholder_phase_1_128.png",
+		moddable_tile_base = "beholder_phase_1.png",
+		true_moddable_tile_base = "beholder_phase_1.png",
+		closed_moddable_tile_base = "beholder_phase_1_closedeye.png",
+		image = "player/yeek/beholder_phase_1.png",
 		resolvers.genericlast(function(e) e.faction = "undead" end), --yeah I know lazy
 		default_wilderness = {"playerpop", "shaloren"},
 		starting_zone = "scintillating-caves",
@@ -95,12 +95,8 @@ newBirthDescriptor{
 	},
 	random_escort_possibilities = { {"tier1.1", 1, 2}, {"tier1.2", 1, 2}, {"daikara", 1, 2}, {"old-forest", 1, 4}, {"dreadfell", 1, 8}, {"reknor", 1, 2}, },
 	body = {FINGER = 8,LITE=1,HEAD=1,NECK=1,TOOL=1,MAINHAND=1,OFFHAND=1,FEET="0",BODY="0",QUIVER="0",BELT="0",HANDS="0",CLOAK="0"},
+	moddable_attachement_spots = "race_yeek", moddable_attachement_spots_sexless=true,
 }
-
--- Allow it in Maj'Eyal campaign
-getBirthDescriptor("world", "Maj'Eyal").descriptor_choices.race.Beholder = "allow"
-getBirthDescriptor("world", "Infinite").descriptor_choices.race.Beholder = "allow"
-getBirthDescriptor("world", "Arena").descriptor_choices.race.Beholder = "allow"
 
 ActorInventory.equipdolls.beholder = { w=48, h=48, itemframe="ui/equipdoll/itemframe48.png", itemframe_sel="ui/equipdoll/itemframe-sel48.png", ix=3, iy=3, iw=42, ih=42, doll_x=116, doll_y=168+64, list={
 		PSIONIC_FOCUS = {{weight=1, x=48, y=48}},

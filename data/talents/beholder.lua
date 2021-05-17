@@ -308,9 +308,7 @@ newTalent{
 	cooldown = 0,
 	is_spell=true,
 	activate = function(self, t)
-		--self:setEffect(self.EFF_CLOAK_OF_DECEPTION, 1, {})
 		self.old_faction_cloak = self.faction
-		--local player = self:getPlayer(true)
 		if self.descriptor.world == "Orcs" then
 			self.faction = "kruk-pride"
 		else
@@ -321,32 +319,28 @@ newTalent{
 		self.moddable_tile = "human_male"
 		self.moddable_tile_base = "base_higher_01.png"
 		self.moddable_attachement_spots = "race_human"
+		self.moddable_tile_nude = 0
 		self.moddable_tile_ornament={}
-		--self.moddable_tile_ornament["male"]="upper_body_13"
-		self.moddable_tile_ornament["male"]="beholder_lower_body_01"
-		self.moddable_tile_ornament["male"]="beholder_upper_body_01"
 		self:updateModdableTile()
 		engine.Map:setViewerFaction(self.faction)
 		return {}
 	end,
 	deactivate = function(self, t, p)
-		-- Reset the terrain tile
-		--self:removeEffect(self.EFF_CLOAK_OF_DECEPTION, true, true)
 		self.faction = self.old_faction_cloak
 		self.descriptor.fake_race = nil
 		self.descriptor.fake_subrace = nil
-		self.moddable_tile = nil--"beholder"
-		self.moddable_tile_base = nil--self.true_moddable_tile_base
-		self.moddable_attachement_spots = "race_halfling"
+		--self.moddable_tile = nil
+		self.moddable_tile = "yeek"
+		--self.moddable_tile_base = nil
+		self.moddable_attachement_spots = "race_yeek"
+		self.moddable_attachement_spots_sexless=true
+		self.moddable_tile_nude = 1
 		self.moddable_tile_ornament=nil
-		self:removeAllMOs()
 		local tile_to_use =self.true_moddable_tile_base
 		if self:hasEffect(self.EFF_DRAINED_CENTRAL_EYE) then
 			tile_to_use=self.closed_moddable_tile_base
 		end
-
-		self.add_mos = {{image="player/beholder/"..(tile_to_use)}}
-		game.level.map:updateMap(self.x, self.y)
+		self.moddable_tile_base = tile_to_use
 		self:updateModdableTile()
 		if self.player then engine.Map:setViewerFaction(self.faction) end
 

@@ -66,13 +66,13 @@ newEffect{
 	activate = function(self, eff)
 		if self:knowTalent(self.T_BEHOLDER_INVIGORATE) then eff.spower = self:callTalent(self.T_BEHOLDER_INVIGORATE, "getSpellPowerBoost") end
 		eff.tmpid2 = self:addTemporaryValue("combat_spellpower", eff.spower)
-		self.add_mos = {{image="player/beholder/"..(self.closed_moddable_tile_base)}}
+		self.moddable_tile_base = self.closed_moddable_tile_base
 		self:updateModdableTile()
 	end,
 	deactivate = function(self, eff)
 		self:removeTemporaryValue("combat_spellpower", eff.tmpid2)
 		self:removeAllMOs()
-		self.add_mos = {{image="player/beholder/"..(self.true_moddable_tile_base)}}
+		self.moddable_tile_base = self.true_moddable_tile_base
 		game.level.map:updateMap(self.x, self.y)
 		self:updateModdableTile()
 	end,
