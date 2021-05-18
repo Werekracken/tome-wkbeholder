@@ -133,10 +133,8 @@ function combatTalentLimit(self,t, limit, low, high, raw)
 		return (limit-add)*tl/(tl + halfpoint) + add
 	end
 end
+
 mage_stage_2 = function(self)
-	--self:setTalentTypeMastery("spell/fire-eye", self:getTalentTypeMastery("spell/fire-eye") + 0.1)
-	--self:setTalentTypeMastery("spell/frost-eye", self:getTalentTypeMastery("spell/frost-eye") + 0.1)
-	--self:setTalentTypeMastery("spell/lightning-eye", self:getTalentTypeMastery("spell/lightning-eye") + 0.1)
 	self:attr("blind_immune",.2)
 	self:attr("infravision",2)
 	self:attr("movement_speed",.1)
@@ -146,53 +144,30 @@ mage_stage_2 = function(self)
 	self:attr("life_rating",1)
 	self:attr("growth_stage",1)
 	self:attr("combat_armor_hardiness",10)
+	self.max_life = self.max_life + self.level
+	self.true_moddable_tile_base = "beholder_phase_2.png"
+	self.closed_moddable_tile_base = "beholder_phase_2_closedeye.png"
+	game.level.map:updateMap(self.x, self.y)
 	if not game:hasDialogUp(1) then require("engine.ui.Dialog"):simplePopup("Beholder Growth", "#GOLD#You feel a rush of power as your magical energy increases") end  --checks if dialogs open total >1, 1 will be open but on the player's turn we do not see that.
 	game.level.map:particleEmitter(self.x, self.y, 1, "demon_teleport")
-
-	self.max_life = self.max_life + self.level
-	--self:learnTalentType("spell/frost-eye", true)
-	--self:setTalentTypeMastery("spell/frost-eye", 1)
-	--self:learnTalent(self.T_FROST_LASER,true)
---	self:learnTalentType("spell/lightning-eye", true)
---	self:setTalentTypeMastery("spell/lightning-eye", 1)
 end
 
 mage_stage_3 = function(self)
-	--self:setTalentTypeMastery("spell/fire-eye", self:getTalentTypeMastery("spell/fire-eye") + 0.1)
-	--self:setTalentTypeMastery("spell/frost-eye", self:getTalentTypeMastery("spell/frost-eye") + 0.1)
-	--self:setTalentTypeMastery("spell/lightning-eye", self:getTalentTypeMastery("spell/lightning-eye") + 0.1)
 	self:attr("blind_immune",.2)
 	self:attr("infravision",2)
 	self:attr("movement_speed",.1)
 	self:attr("max_air",50)
 	self.air = self.air+50
 	self:attr("combat_armor",3)
-	self.max_life = self.max_life + self.level
 	self:attr("life_rating",1)
-	self:attr("combat_armor_hardiness",10)
-	self.true_moddable_tile_base = "beholder_base_mage.png"
-	self.moddable_tile_base = "beholder_base_mage.png"
-	self.closed_moddable_tile_base = "beholder_base_mage_closedeye.png"
 	self:attr("growth_stage",1)
+	self:attr("combat_armor_hardiness",10)
+	self.max_life = self.max_life + self.level
 	self:attr("size_category",1)
---	self:updateModdableTile()
 	self:attr("unused_talents",1)
-	self.moddable_tile = nil--"beholder"
-	self.moddable_tile_base = nil--self.true_moddable_tile_base
-	self.moddable_tile_nude = true
-	self.moddable_tile_ornament=nil
-	self:removeAllMOs()
-	self.image="player/human_male/base_shadow_01.png"
-	-- neka_qol07 is the Nekarcos's Quality of Life 07: Visible Size Categories addon
-	if not self.sustain_talents.T_BEHOLDER_CLOAKING and not game:isAddonActive("neka_qol07") then
-		self.add_mos = {{image="player/beholder/beholder_base_mage.png",display_h=1,display_w=1, display_y=0, display_x=0}}
-	elseif not self.sustain_talents.T_BEHOLDER_CLOAKING then
-		self.add_mos = {{image="player/beholder/beholder_base_mage.png"}}
-	end
+	self.true_moddable_tile_base = "beholder_phase_3.png"
+	self.closed_moddable_tile_base = "beholder_phase_3_closedeye.png"
 	game.level.map:updateMap(self.x, self.y)
-	--self:learnTalentType("spell/tri-beam", false)
-	--self:setTalentTypeMastery("spell/tri-beam", 1.3)
-	-- self:learnTalent(self.T_BEHOLDER_INVIGORATE,true)
 	if not game:hasDialogUp(1) then require("engine.ui.Dialog"):simplePopup("Beholder Growth", "#GOLD#You feel a rush of power as your magical energy increases") end
 	game.level.map:particleEmitter(self.x, self.y, 1, "demon_teleport")
 end
@@ -206,51 +181,34 @@ mage_stage_4 = function(self)
 	self:attr("combat_armor",3)
 	self:attr("life_rating",1)
 	self:attr("growth_stage",1)
-	self:attr("size_category",1)
 	self:attr("combat_armor_hardiness",10)
 	self.max_life = self.max_life + self.level
+	self:attr("size_category",1)
+	self.true_moddable_tile_base = "beholder_phase_4.png"
+	self.closed_moddable_tile_base = "beholder_phase_4_closedeye.png"
+	game.level.map:updateMap(self.x, self.y)
 	if not game:hasDialogUp(1) then require("engine.ui.Dialog"):simplePopup("Beholder Growth", "#GOLD#You feel a rush of power as your magical energy increases") end
 	game.level.map:particleEmitter(self.x, self.y, 1, "demon_teleport")
-	--self:learnTalentType("spell/frost-eye", true)
-	--self:setTalentTypeMastery("spell/frost-eye", 1)
-	--self:learnTalent(self.T_FROST_LASER,true)
---	self:learnTalentType("spell/lightning-eye", true)
---	self:setTalentTypeMastery("spell/lightning-eye", 1)
 end
 
 mage_stage_5 = function(self)
-	--self:setTalentTypeMastery("spell/fire-eye", self:getTalentTypeMastery("spell/fire-eye") + 0.1)
-	--self:setTalentTypeMastery("spell/frost-eye", self:getTalentTypeMastery("spell/frost-eye") + 0.1)
-	--self:setTalentTypeMastery("spell/lightning-eye", self:getTalentTypeMastery("spell/lightning-eye") + 0.1)
 	self:attr("blind_immune",.2)
 	self:attr("infravision",2)
 	self:attr("movement_speed",.05)
 	self:attr("no_breath",1)
 	self.air = self.max_air
-	self:attr("life_rating",1)
 	self:attr("combat_armor",3)
+	self:attr("life_rating",1)
+	self:attr("growth_stage",1)
 	self:attr("combat_armor_hardiness",10)
 	self.max_life = self.max_life + self.level
-	self.true_moddable_tile_base = "beholder_base_mage_evolved.png"
---	self.moddable_tile_base = "beholder_base_mage_evolved.png"
-	self.closed_moddable_tile_base = "beholder_base_mage_evolved_closedeye.png"
-	self:attr("growth_stage",1)
 	self:attr("size_category",1)
 	self:attr("avoid_pressure_traps",1)
-	--self:updateModdableTile()
 	self:attr("unused_talents",1)
-	self:removeAllMOs()
-	self.image="player/human_male/base_shadow_01.png"
-	-- neka_qol07 is the Nekarcos's Quality of Life 07: Visible Size Categories addon
-	if not self.sustain_talents.T_BEHOLDER_CLOAKING and not game:isAddonActive("neka_qol07") then
-		self.add_mos = {{image="player/beholder/beholder_base_mage_evolved.png",  display_h=1.5,display_w=1.5, display_y=-.5, display_x=-.25}}
-	elseif not self.sustain_talents.T_BEHOLDER_CLOAKING then
-		self.add_mos = {{image="player/beholder/beholder_base_mage_evolved.png"}}
-	end
+	self.max_life = self.max_life + self.level
+	self.true_moddable_tile_base = "beholder_phase_5.png"
+	self.closed_moddable_tile_base = "beholder_phase_5_closedeye.png"
 	game.level.map:updateMap(self.x, self.y)
-	--self:learnTalentType("spell/death-eye", false)
-	--self:setTalentTypeMastery("spell/death-eye", 1.3)
-	-- self:learnTalent(self.T_DEATH_RAY,true)
 	if not game:hasDialogUp(1) then require("engine.ui.Dialog"):simplePopup("Beholder Growth", "#GOLD#You feel a rush of power as your magical energy increases") end
 	game.level.map:particleEmitter(self.x, self.y, 1, "demon_teleport")
 end

@@ -2,7 +2,7 @@ long_name = "Werekracken's Beholder Fork"
 short_name = "wkbeholder"
 for_module = "tome"
 version = { 1, 7, 2 }
-addon_version = {1,7,5}
+addon_version = {1,7,6}
 weight = 100
 author = {"Werekracken"}
 tags = {"Beholder", "Class", "Race", "Monster", "Eyes", "Lasers", "Tentacles"}
@@ -57,7 +57,8 @@ Changelog
 - v1.0.4 Make all classes (except wilders) available to the Beholder race. Make beholders levitate by default instead of at stage 5 growth. Changed them from starting with 10 infravision to getting +2 infravision for each growth stage.
 - v1.7.3 Bumping version number to fix the fact that tome version and addon version got switched up.
 - v1.7.4 Change Temporal Gaze to not kill the target when it's over and to not follow you around. Reduce cooldown and duration of Temporal Gaze. Fix talent cooldown reduction while beholder addon is active (like with Windtouched Speed).
-- v1.7.5 Make the Mage Eye cosmetic size changes into actual size changes as well. Add handling of Nekarcos's Quality of Life 07: Visible Size Categories addon. Fix instant graphic update on size changes.
+- v1.7.5 Make the Beholder cosmetic size changes into actual size changes as well. Add handling of Nekarcos's Quality of Life 07: Visible Size Categories addon. Fix instant graphic update on size changes.
+- v1.7.6 Update all beholder character models with new art from Rexocorum! Increase the amount of points it takes to grow for stages 3/4/5 and update the Beholder race quest information in the quest log. Take out display size changing with growth because Nekarcos's Quality of Life 07: Visible Size Categories addon does a much better job of that. Add display of equipment for the Beholder and it's cloaked human model (but not at the character creation menu because of reasons.) Fix issue where growing while Cloaked made your character tile disappear. Take out chance for unique gems and rings on birth. Add quiver slot back in because some classes need it.
 ]]
 overload = true
 superload = true

@@ -1,5 +1,6 @@
 local DamageType = require "engine.DamageType"
 local ActorInventory = require "engine.interface.ActorInventory"
+
 newBirthDescriptor{
 	type = "race",
 	name = "Beholder",
@@ -51,25 +52,25 @@ newBirthDescriptor{
 		has_central_eye = true, --can check this to fix some lua errors
 	 --you always get some as a flag!
 		growth_stage = 1,
-		growth_curve ={3, 6, 12, 20},
+		growth_curve ={3, 8, 16, 32},
 		size_category = 2,
 		mana_rating = 7,
 		movement_speed=.8,
-		random_name_def = "beholder",
+		random_name_def = "beholder", -- change this in mage-eye-beholder-start, if set to a real one here it will show default armor for other races in the character select
 		resolvers.inventory{ id=true,
-			{type="gem",},
-			{type="gem",},
-			{type="gem",},
+			{type="gem", not_properties={"unique"}},
+			{type="gem", not_properties={"unique"}},
+			{type="gem", not_properties={"unique"}},
 			{defined="ORB_SCRYING"},
 		},
 		resists = { [DamageType.LIGHTNING] = 10, [DamageType.FIRE] = 10, [DamageType.COLD] = 10, },
 		equipdoll = "beholder",
+		moddable_tile_nude = 1,
 		moddable_tile = "beholder",
-		moddable_tile_base = "beholder_nymph.png",
-		true_moddable_tile_base = "beholder_nymph.png",
-		closed_moddable_tile_base = "beholder_nymph_closedeye.png",
-		image = "player/beholder/beholder_nymph.png",
-		moddable_tile_nude = true,
+		moddable_tile_base = "beholder_phase_1.png",
+		true_moddable_tile_base = "beholder_phase_1.png",
+		closed_moddable_tile_base = "beholder_phase_1_closedeye.png",
+		image = "player/runic_golem/beholder_phase_1.png",
 		resolvers.genericlast(function(e) e.faction = "undead" end), --yeah I know lazy
 		default_wilderness = {"playerpop", "shaloren"},
 		starting_zone = "scintillating-caves",
@@ -77,8 +78,8 @@ newBirthDescriptor{
 
 		resolvers.equip{ id=true,
 			{defined="BEHOLDER_SOCKET_RING"},
-			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=100},
-			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=100},
+			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=-1000},
+			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=-1000},
 		},
 		resolvers.inscription("RUNE:_SHIELDING", {cooldown=14, dur=5, power=130}, 1),
 		resolvers.inscription("RUNE:_SHATTER_AFFLICTIONS", {cooldown=18, shield=50}, 2),
@@ -86,6 +87,7 @@ newBirthDescriptor{
 
 		starting_quest = "starter-zones",
 		starting_intro = "beholder",
+		suppress_steam_generator_straps = 1,
 	},
 	talents = {
 		T_MAGEEYE_DEVOUR = 1,
@@ -94,19 +96,16 @@ newBirthDescriptor{
 		T_TENTACLE_MASTERY = 1,
 	},
 	random_escort_possibilities = { {"tier1.1", 1, 2}, {"tier1.2", 1, 2}, {"daikara", 1, 2}, {"old-forest", 1, 4}, {"dreadfell", 1, 8}, {"reknor", 1, 2}, },
-	body = {FINGER = 8,LITE=1,HEAD=1,NECK=1,TOOL=1,MAINHAND=1,OFFHAND=1,FEET="0",BODY="0",QUIVER="0",BELT="0",HANDS="0",CLOAK="0"},
+	body = {FINGER = 7,LITE=1,HEAD=1,NECK=1,TOOL=1,MAINHAND=1,OFFHAND=1,QUIVER=1,FEET="0",BODY="0",BELT="0",HANDS="0",CLOAK="0"},
+	moddable_attachement_spots = "race_ogre", --moddable_attachement_spots_sexless=true,
 }
 
--- Allow it in Maj'Eyal campaign
-getBirthDescriptor("world", "Maj'Eyal").descriptor_choices.race.Beholder = "allow"
-getBirthDescriptor("world", "Infinite").descriptor_choices.race.Beholder = "allow"
-getBirthDescriptor("world", "Arena").descriptor_choices.race.Beholder = "allow"
-
 ActorInventory.equipdolls.beholder = { w=48, h=48, itemframe="ui/equipdoll/itemframe48.png", itemframe_sel="ui/equipdoll/itemframe-sel48.png", ix=3, iy=3, iw=42, ih=42, doll_x=116, doll_y=168+64, list={
-		PSIONIC_FOCUS = {{weight=1, x=48, y=48}},
-		MAINHAND = {{weight=2, x=48, y=120}},
-		OFFHAND = {{weight=3, x=48, y=192}},
-		FINGER = {{weight=12, x=264, y=192},{weight=4, x=48, y=264},{weight=11, x=264, y=264},{weight=10, x=264, y=336},{weight=5, x=48, y=336},{weight=6, x=48, y=408}, {weight=7, x=120, y=408, text="bottom"},{weight=13, x=264, y=120}},
+		PSIONIC_FOCUS = {{weight=1, x=48, y=48, subshift="left"}},
+		MAINHAND = {{weight=2, x=48, y=120, subshift="left"}},
+		OFFHAND = {{weight=3, x=48, y=192, subshift="left"}},
+		QUIVER = {{weight=5, x=48, y=336, subshift="left"}},
+		FINGER = {{weight=12, x=264, y=192},{weight=4, x=48, y=264},{weight=11, x=264, y=264},{weight=10, x=264, y=336},{weight=6, x=48, y=408}, {weight=7, x=120, y=408, text="bottom"},{weight=13, x=264, y=120}},
 		TOOL = {{weight=9, x=264, y=408, text="bottom"}},
 		LITE = {{weight=8, x=192, y=408}},
 		NECK = {{weight=14, x=192, y=48, text="topright"}},
