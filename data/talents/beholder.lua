@@ -307,32 +307,40 @@ newTalent{
 	no_energy = true,
 	cooldown = 0,
 	is_spell=true,
-	activate = function(self, t)
+	activate = function(self, who)
 		self.old_faction_cloak = self.faction
 		if self.descriptor.world == "Orcs" then
-			self.faction = "kruk-pride"
+			new_faction = "kruk-pride"
 		else
-			self.faction = "allied-kingdoms"
+			new_faction = "allied-kingdoms"
 		end
-		self.descriptor.fake_race = "Human"
-		self.descriptor.fake_subrace = "Cornac"
+		self.faction = new_faction
+		if self.descriptor and self.descriptor.race and self:attr("undead") then self.descriptor.fake_race = "Human" end
+		if self.descriptor and self.descriptor.subrace and self:attr("undead") then self.descriptor.fake_subrace = "Cornac" end
 		self.moddable_tile = "human_male"
 		self.moddable_tile_base = "base_higher_01.png"
 		self.moddable_attachement_spots = "race_human"
 		self.moddable_tile_nude = 0
 		self.moddable_tile_ornament={}
 		self:updateModdableTile()
+		--if self.player then engine.Map:setViewerFaction(self.faction) end
+
+		if game.party:hasMember(who) then
+			for m, _ in pairs(game.party.members) do
+				if m.summon and m.summon.summoner == self then
+					m.faction = self.faction
+				end
+			end
+		end
 		engine.Map:setViewerFaction(self.faction)
 		return {}
 	end,
-	deactivate = function(self, t, p)
+	deactivate = function(self, who)
 		self.faction = self.old_faction_cloak
-		self.descriptor.fake_race = nil
-		self.descriptor.fake_subrace = nil
-		--self.moddable_tile = nil
-		self.moddable_tile = "yeek"
-		--self.moddable_tile_base = nil
-		self.moddable_attachement_spots = "race_yeek"
+		if self.descriptor and self.descriptor.race and self:attr("undead") then self.descriptor.fake_race = nil end
+		if self.descriptor and self.descriptor.subrace and self:attr("undead") then self.descriptor.fake_subrace = nil end
+		self.moddable_tile = "runic_golem"
+		self.moddable_attachement_spots = "race_runic_golem"
 		self.moddable_attachement_spots_sexless=true
 		self.moddable_tile_nude = 1
 		self.moddable_tile_ornament=nil
@@ -342,8 +350,16 @@ newTalent{
 		end
 		self.moddable_tile_base = tile_to_use
 		self:updateModdableTile()
-		if self.player then engine.Map:setViewerFaction(self.faction) end
+		--if self.player then engine.Map:setViewerFaction(self.faction) end
 
+		if game.party:hasMember(who) then
+			for m, _ in pairs(game.party.members) do
+				if m.summon and m.summon.summoner == self then
+					m.faction = self.faction
+				end
+			end
+		end
+		engine.Map:setViewerFaction(self.faction)
 		return true
 	end,
 	info = function(self, t)

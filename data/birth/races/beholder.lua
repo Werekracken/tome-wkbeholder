@@ -1,5 +1,6 @@
 local DamageType = require "engine.DamageType"
 local ActorInventory = require "engine.interface.ActorInventory"
+
 newBirthDescriptor{
 	type = "race",
 	name = "Beholder",
@@ -55,7 +56,7 @@ newBirthDescriptor{
 		size_category = 2,
 		mana_rating = 7,
 		movement_speed=.8,
-		random_name_def = "beholder", -- change this to yeek in mage-eye-beholder-start, if yeek here it will show default armor for other races
+		random_name_def = "beholder", -- change this to runic_golem in mage-eye-beholder-start, if runic_golem here it will show default armor for other races
 		resolvers.inventory{ id=true,
 			{type="gem",},
 			{type="gem",},
@@ -69,7 +70,7 @@ newBirthDescriptor{
 		moddable_tile_base = "beholder_phase_1.png",
 		true_moddable_tile_base = "beholder_phase_1.png",
 		closed_moddable_tile_base = "beholder_phase_1_closedeye.png",
-		image = "player/yeek/beholder_phase_1.png",
+		image = "player/runic_golem/beholder_phase_1.png",
 		resolvers.genericlast(function(e) e.faction = "undead" end), --yeah I know lazy
 		default_wilderness = {"playerpop", "shaloren"},
 		starting_zone = "scintillating-caves",
@@ -86,6 +87,7 @@ newBirthDescriptor{
 
 		starting_quest = "starter-zones",
 		starting_intro = "beholder",
+		suppress_steam_generator_straps = 1,
 	},
 	talents = {
 		T_MAGEEYE_DEVOUR = 1,
@@ -94,15 +96,16 @@ newBirthDescriptor{
 		T_TENTACLE_MASTERY = 1,
 	},
 	random_escort_possibilities = { {"tier1.1", 1, 2}, {"tier1.2", 1, 2}, {"daikara", 1, 2}, {"old-forest", 1, 4}, {"dreadfell", 1, 8}, {"reknor", 1, 2}, },
-	body = {FINGER = 8,LITE=1,HEAD=1,NECK=1,TOOL=1,MAINHAND=1,OFFHAND=1,FEET="0",BODY="0",QUIVER="0",BELT="0",HANDS="0",CLOAK="0"},
-	moddable_attachement_spots = "race_yeek", moddable_attachement_spots_sexless=true,
+	body = {FINGER = 7,LITE=1,HEAD=1,NECK=1,TOOL=1,MAINHAND=1,OFFHAND=1,QUIVER=1,FEET="0",BODY="0",BELT="0",HANDS="0",CLOAK="0"},
+	moddable_attachement_spots = "race_runic_golem", moddable_attachement_spots_sexless=true,
 }
 
 ActorInventory.equipdolls.beholder = { w=48, h=48, itemframe="ui/equipdoll/itemframe48.png", itemframe_sel="ui/equipdoll/itemframe-sel48.png", ix=3, iy=3, iw=42, ih=42, doll_x=116, doll_y=168+64, list={
-		PSIONIC_FOCUS = {{weight=1, x=48, y=48}},
-		MAINHAND = {{weight=2, x=48, y=120}},
-		OFFHAND = {{weight=3, x=48, y=192}},
-		FINGER = {{weight=12, x=264, y=192},{weight=4, x=48, y=264},{weight=11, x=264, y=264},{weight=10, x=264, y=336},{weight=5, x=48, y=336},{weight=6, x=48, y=408}, {weight=7, x=120, y=408, text="bottom"},{weight=13, x=264, y=120}},
+		PSIONIC_FOCUS = {{weight=1, x=48, y=48, subshift="left"}},
+		MAINHAND = {{weight=2, x=48, y=120, subshift="left"}},
+		OFFHAND = {{weight=3, x=48, y=192, subshift="left"}},
+		QUIVER = {{weight=5, x=48, y=336, subshift="left"}},
+		FINGER = {{weight=12, x=264, y=192},{weight=4, x=48, y=264},{weight=11, x=264, y=264},{weight=10, x=264, y=336},{weight=6, x=48, y=408}, {weight=7, x=120, y=408, text="bottom"},{weight=13, x=264, y=120}},
 		TOOL = {{weight=9, x=264, y=408, text="bottom"}},
 		LITE = {{weight=8, x=192, y=408}},
 		NECK = {{weight=14, x=192, y=48, text="topright"}},
