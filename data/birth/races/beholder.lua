@@ -58,9 +58,9 @@ newBirthDescriptor{
 		movement_speed=.8,
 		random_name_def = "beholder", -- change this to runic_golem in mage-eye-beholder-start, if runic_golem here it will show default armor for other races
 		resolvers.inventory{ id=true,
-			{type="gem",},
-			{type="gem",},
-			{type="gem",},
+			{type="gem", not_properties={"unique"}},
+			{type="gem", not_properties={"unique"}},
+			{type="gem", not_properties={"unique"}},
 			{defined="ORB_SCRYING"},
 		},
 		resists = { [DamageType.LIGHTNING] = 10, [DamageType.FIRE] = 10, [DamageType.COLD] = 10, },
@@ -78,8 +78,8 @@ newBirthDescriptor{
 
 		resolvers.equip{ id=true,
 			{defined="BEHOLDER_SOCKET_RING"},
-			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=100},
-			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=100},
+			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=-1000},
+			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=-1000},
 		},
 		resolvers.inscription("RUNE:_SHIELDING", {cooldown=14, dur=5, power=130}, 1),
 		resolvers.inscription("RUNE:_SHATTER_AFFLICTIONS", {cooldown=18, shield=50}, 2),
