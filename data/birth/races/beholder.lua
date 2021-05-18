@@ -56,7 +56,7 @@ newBirthDescriptor{
 		size_category = 2,
 		mana_rating = 7,
 		movement_speed=.8,
-		random_name_def = "beholder", -- change this to runic_golem in mage-eye-beholder-start, if runic_golem here it will show default armor for other races
+		random_name_def = "beholder", -- change this in mage-eye-beholder-start, if set to a real one here it will show default armor for other races in the character select
 		resolvers.inventory{ id=true,
 			{type="gem", not_properties={"unique"}},
 			{type="gem", not_properties={"unique"}},
@@ -97,7 +97,7 @@ newBirthDescriptor{
 	},
 	random_escort_possibilities = { {"tier1.1", 1, 2}, {"tier1.2", 1, 2}, {"daikara", 1, 2}, {"old-forest", 1, 4}, {"dreadfell", 1, 8}, {"reknor", 1, 2}, },
 	body = {FINGER = 7,LITE=1,HEAD=1,NECK=1,TOOL=1,MAINHAND=1,OFFHAND=1,QUIVER=1,FEET="0",BODY="0",BELT="0",HANDS="0",CLOAK="0"},
-	moddable_attachement_spots = "race_runic_golem", moddable_attachement_spots_sexless=true,
+	moddable_attachement_spots = "race_ogre", --moddable_attachement_spots_sexless=true,
 }
 
 ActorInventory.equipdolls.beholder = { w=48, h=48, itemframe="ui/equipdoll/itemframe48.png", itemframe_sel="ui/equipdoll/itemframe-sel48.png", ix=3, iy=3, iw=42, ih=42, doll_x=116, doll_y=168+64, list={

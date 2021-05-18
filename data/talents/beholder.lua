@@ -340,8 +340,8 @@ newTalent{
 		if self.descriptor and self.descriptor.race and self:attr("undead") then self.descriptor.fake_race = nil end
 		if self.descriptor and self.descriptor.subrace and self:attr("undead") then self.descriptor.fake_subrace = nil end
 		self.moddable_tile = "runic_golem"
-		self.moddable_attachement_spots = "race_runic_golem"
-		self.moddable_attachement_spots_sexless=true
+		self.moddable_attachement_spots = "race_ogre"
+		--self.moddable_attachement_spots_sexless=true
 		self.moddable_tile_nude = 1
 		self.moddable_tile_ornament=nil
 		local tile_to_use =self.true_moddable_tile_base

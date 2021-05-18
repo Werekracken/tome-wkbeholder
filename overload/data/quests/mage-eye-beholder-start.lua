@@ -60,7 +60,7 @@ end
 
 on_grant = function(self, who, status, sub)
 	who.moddable_tile_ornament=nil
-	who.moddable_tile = "runic_golem" -- change from beholder to runic_golem so we can show equipment on the character
+	who.moddable_tile = "runic_golem" -- change from beholder so we can show equipment on the character
 	who:removeAllMOs()
 	who.image="player/human_male/base_shadow_01.png"
 	local cloaked = who:isTalentActive(who.T_BEHOLDER_CLOAKING)
