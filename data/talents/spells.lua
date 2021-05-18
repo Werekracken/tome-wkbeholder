@@ -146,9 +146,7 @@ mage_stage_2 = function(self)
 	self:attr("combat_armor_hardiness",10)
 	self.max_life = self.max_life + self.level
 	self.true_moddable_tile_base = "beholder_phase_2.png"
-	self.moddable_tile_base = "beholder_phase_2.png"
 	self.closed_moddable_tile_base = "beholder_phase_2_closedeye.png"
-	self.image="player/human_male/base_shadow_01.png"
 	game.level.map:updateMap(self.x, self.y)
 	if not game:hasDialogUp(1) then require("engine.ui.Dialog"):simplePopup("Beholder Growth", "#GOLD#You feel a rush of power as your magical energy increases") end  --checks if dialogs open total >1, 1 will be open but on the player's turn we do not see that.
 	game.level.map:particleEmitter(self.x, self.y, 1, "demon_teleport")
@@ -168,9 +166,7 @@ mage_stage_3 = function(self)
 	self:attr("size_category",1)
 	self:attr("unused_talents",1)
 	self.true_moddable_tile_base = "beholder_phase_3.png"
-	self.moddable_tile_base = "beholder_phase_3.png"
 	self.closed_moddable_tile_base = "beholder_phase_3_closedeye.png"
-	self.image="player/human_male/base_shadow_01.png"
 	game.level.map:updateMap(self.x, self.y)
 	if not game:hasDialogUp(1) then require("engine.ui.Dialog"):simplePopup("Beholder Growth", "#GOLD#You feel a rush of power as your magical energy increases") end
 	game.level.map:particleEmitter(self.x, self.y, 1, "demon_teleport")
@@ -189,9 +185,7 @@ mage_stage_4 = function(self)
 	self.max_life = self.max_life + self.level
 	self:attr("size_category",1)
 	self.true_moddable_tile_base = "beholder_phase_4.png"
-	self.moddable_tile_base = "beholder_phase_4.png"
 	self.closed_moddable_tile_base = "beholder_phase_4_closedeye.png"
-	self.image="player/human_male/base_shadow_01.png"
 	game.level.map:updateMap(self.x, self.y)
 	if not game:hasDialogUp(1) then require("engine.ui.Dialog"):simplePopup("Beholder Growth", "#GOLD#You feel a rush of power as your magical energy increases") end
 	game.level.map:particleEmitter(self.x, self.y, 1, "demon_teleport")
@@ -213,9 +207,7 @@ mage_stage_5 = function(self)
 	self:attr("unused_talents",1)
 	self.max_life = self.max_life + self.level
 	self.true_moddable_tile_base = "beholder_phase_5.png"
-	self.moddable_tile_base = "beholder_phase_5.png"
 	self.closed_moddable_tile_base = "beholder_phase_5_closedeye.png"
-	self.image="player/human_male/base_shadow_01.png"
 	game.level.map:updateMap(self.x, self.y)
 	if not game:hasDialogUp(1) then require("engine.ui.Dialog"):simplePopup("Beholder Growth", "#GOLD#You feel a rush of power as your magical energy increases") end
 	game.level.map:particleEmitter(self.x, self.y, 1, "demon_teleport")
