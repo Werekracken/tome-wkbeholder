@@ -78,8 +78,8 @@ newBirthDescriptor{
 
 		resolvers.equip{ id=true,
 			{defined="BEHOLDER_SOCKET_RING"},
-			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=-1000},
-			{type="jewelry", subtype="ring",  autoreq=true, ego_chance=-1000},
+			{type="jewelry", subtype="ring", autoreq=true, ego_chance=100, not_properties={"unique"}},
+			{type="jewelry", subtype="ring", autoreq=true, ego_chance=100, not_properties={"unique"}},
 		},
 		resolvers.inscription("RUNE:_SHIELDING", {cooldown=14, dur=5, power=130}, 1),
 		resolvers.inscription("RUNE:_SHATTER_AFFLICTIONS", {cooldown=18, shield=50}, 2),
