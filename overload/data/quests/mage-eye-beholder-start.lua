@@ -29,31 +29,35 @@ desc = function(self, who)
 
 	if who.growth_stage == 1 then
 		desc[#desc+1] = "\nCurrent growth stage: #LIGHT_GREEN#1#WHITE#."
-		desc[#desc+1] = "\nTotal growth bonuses: #GOLD#NONE#WHITE#."
+		desc[#desc+1] = ("\nCurrent growth points: #LIGHT_GREEN#%0.2f#WHITE#."):format(who.growth_points)
 		desc[#desc+1] = ("\nGrowth points needed for next stage: #LIGHT_GREEN#%d#WHITE#."):format(who.growth_curve[1])
+		desc[#desc+1] = "\nTotal growth bonuses: #GOLD#NONE#WHITE#."
 	end
 	if who.growth_stage == 2 then
 		desc[#desc+1] = "\nCurrent growth stage: #LIGHT_GREEN#2#WHITE#."
-		desc[#desc+1] = "\nTotal growth bonuses: #GOLD#+1 life rating(retroactive), +10% armor hardiness, +3 armor, +20% blindness resistance, +50 max air, +10% movement speed, +2 infravision#WHITE#."
+		desc[#desc+1] = ("\nCurrent growth points: #LIGHT_GREEN#%0.2f#WHITE#."):format(who.growth_points)
 		desc[#desc+1] = ("\nGrowth points needed for next stage: #LIGHT_GREEN#%d#WHITE#."):format(who.growth_curve[2])
+		desc[#desc+1] = "\nTotal growth bonuses: #GOLD#+1 life rating(retroactive), +10% armor hardiness, +3 armor, +20% blindness resistance, +50 max air, +10% movement speed, +2 infravision#WHITE#."
 	end
 	if who.growth_stage == 3 then
 		desc[#desc+1] = "\nCurrent growth stage: #LIGHT_GREEN#3#WHITE#."
+		desc[#desc+1] = ("\nCurrent growth points: #LIGHT_GREEN#%0.2f#WHITE#."):format(who.growth_points)
+		desc[#desc+1] = ("\nGrowth points needed for next stage: #LIGHT_GREEN#%d#WHITE#."):format(who.growth_curve[3])
 		desc[#desc+1] = "\nTotal growth bonuses: #GOLD#+2 life rating(retroactive), +20% armor hardiness, +6 armor, +40% blindness resistance, +100 max air, +20% movement speed, +4 infravision, size: Medium#WHITE#."
 		desc[#desc+1] = "\n#GOLD#+1 class points."
-		desc[#desc+1] = ("\nGrowth points needed for next stage: #LIGHT_GREEN#%d#WHITE#."):format(who.growth_curve[3])
 	end
 	if who.growth_stage == 4 then
 		desc[#desc+1] = "\nCurrent growth stage: #LIGHT_GREEN#4#WHITE#."
+		desc[#desc+1] = ("\nCurrent growth points: #LIGHT_GREEN#%0.2f#WHITE#."):format(who.growth_points)
+		desc[#desc+1] = ("\nGrowth points needed for next stage: #LIGHT_GREEN#%d#WHITE#."):format(who.growth_curve[4])
 		desc[#desc+1] = "\nTotal growth bonuses: #GOLD#+3 life rating(retroactive), +30% armor hardiness, +9 armor, +60% blindness resistance, +150 max air, +30% movement speed, +6 infravision, size: Big#WHITE#."
 		desc[#desc+1] = "\n#GOLD#+1 class points."
-		desc[#desc+1] = ("\nGrowth points needed for next stage: #LIGHT_GREEN#%d#WHITE#."):format(who.growth_curve[4])
 	end
 	if who.growth_stage == 5 then
 		desc[#desc+1] = "\nCurrent growth stage: #LIGHT_GREEN#5#WHITE#."
+		desc[#desc+1] = "\nYou have grown as large as you can."
 		desc[#desc+1] = "\nTotal growth bonuses: #GOLD#+4 life rating(retroactive), +40% armor hardiness, +12 armor, +80% blindness resistance, underwater breathing, +35% movement speed, +8 infravision, size: Huge#WHITE#."
 		desc[#desc+1] = "\n#GOLD#+2 class points."
-		desc[#desc+1] = "\nYou have grown as large as you can."
 	end
 	return table.concat(desc, "\n")
 end
