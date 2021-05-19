@@ -350,16 +350,16 @@ newTalent{
 		end
 		self.moddable_tile_base = tile_to_use
 		self:updateModdableTile()
-		--if self.player then engine.Map:setViewerFaction(self.faction) end
+		if self.player then engine.Map:setViewerFaction(self.faction) end
 
 		if game.party:hasMember(who) then
 			for m, _ in pairs(game.party.members) do
 				if m.summon and m.summon.summoner == self then
-					m.faction = self.faction
+					--m.faction = self.faction
+					engine.Map:setViewerFaction(self.faction)
 				end
 			end
 		end
-		engine.Map:setViewerFaction(self.faction)
 		return true
 	end,
 	info = function(self, t)
@@ -413,7 +413,6 @@ newTalent{
 			game.log(text)
 			self.changed = true
 			d.used_talent = true
-			self:updateModdableTile()
 		end)
 
 		return true

@@ -50,9 +50,7 @@ newBirthDescriptor{
 		T_FLAME_LASER = 1,
 		T_FROST_LASER = 1,
 		T_LIGHTNING_LASER = 1,
-		T_ARMOUR_TRAINING = 2,
 	},
-	resolvers.inscription("RUNE:_MANASURGE", {cooldown=25, dur=10, mana=620}),
 }
 
 --Gauth, Gouger, Armored
