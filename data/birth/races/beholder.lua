@@ -44,7 +44,7 @@ newBirthDescriptor{
 	inc_stats = {str =-2, cun = 2, dex = 2, mag = 3, wil =4,},
 	power_source = {arcane=true},
 	talents_types = {
-		["race/beholder"] ={true, 0.1},
+		["race/beholder"] ={true, 0.3},
 	},
 	copy = {
 		life_rating = 13,
