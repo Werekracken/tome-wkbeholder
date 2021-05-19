@@ -96,7 +96,7 @@ newBirthDescriptor{
 		T_TENTACLE_MASTERY = 1,
 	},
 	random_escort_possibilities = { {"tier1.1", 1, 2}, {"tier1.2", 1, 2}, {"daikara", 1, 2}, {"old-forest", 1, 4}, {"dreadfell", 1, 8}, {"reknor", 1, 2}, },
-	body = {FINGER = 7,LITE=1,HEAD=1,NECK=1,TOOL=1,MAINHAND=1,OFFHAND=1,QUIVER=1,FEET="0",BODY="0",BELT="0",HANDS="0",CLOAK="0"},
+	body = {FINGER=8,LITE=1,HEAD=1,NECK=1,TOOL=1,MAINHAND=1,OFFHAND=1,QUIVER=1,FEET="0",BODY="0",BELT="0",HANDS="0",CLOAK="0"},
 	moddable_attachement_spots = "race_ogre", --moddable_attachement_spots_sexless=true,
 }
 
@@ -105,10 +105,10 @@ ActorInventory.equipdolls.beholder = { w=48, h=48, itemframe="ui/equipdoll/itemf
 		MAINHAND = {{weight=2, x=48, y=120, subshift="left"}},
 		OFFHAND = {{weight=3, x=48, y=192, subshift="left"}},
 		QUIVER = {{weight=5, x=48, y=336, subshift="left"}},
-		FINGER = {{weight=12, x=264, y=192},{weight=4, x=48, y=264},{weight=11, x=264, y=264},{weight=10, x=264, y=336},{weight=6, x=48, y=408}, {weight=7, x=120, y=408, text="bottom"},{weight=13, x=264, y=120}},
+		FINGER = {{weight=12, x=264, y=192},{weight=4, x=48, y=264},{weight=11, x=264, y=264},{weight=10, x=264, y=336},{weight=6, x=48, y=408}, {weight=7, x=120, y=408, text="bottom"},{weight=13, x=264, y=120},{weight=16, x=264, y=48, text="topright"}},
 		TOOL = {{weight=9, x=264, y=408, text="bottom"}},
 		LITE = {{weight=8, x=192, y=408}},
-		NECK = {{weight=14, x=192, y=48, text="topright"}},
+		NECK = {{weight=14, x=192, y=48, text="top"}},
 		HEAD = {{weight=15, x=120, y=48, text="topleft"}},
 }}
 
