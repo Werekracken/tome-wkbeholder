@@ -63,15 +63,7 @@ desc = function(self, who)
 end
 
 on_grant = function(self, who, status, sub)
-	who.moddable_tile_ornament=nil
 	who.moddable_tile = "runic_golem" -- change from beholder so we can show equipment on the character
-	who:removeAllMOs()
-	who.image="player/human_male/base_shadow_01.png"
-	local cloaked = who:isTalentActive(who.T_BEHOLDER_CLOAKING)
-	if not cloaked then
-		who.add_mos = {{image="player/runic_golem/"..(who.true_moddable_tile_base)}}
-	end
-	game.level.map:updateMap(who.x, who.y)
 	who:updateModdableTile()
 
 	if who.inven[who["INVEN_FEET"]] then
