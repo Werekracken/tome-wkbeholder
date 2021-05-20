@@ -73,7 +73,6 @@ newEffect{
 		self:removeTemporaryValue("combat_spellpower", eff.tmpid2)
 		self:removeAllMOs()
 		self.moddable_tile_base = self.true_moddable_tile_base
-		game.level.map:updateMap(self.x, self.y)
 		self:updateModdableTile()
 	end,
 	on_merge = function(self, old_eff, new_eff)
