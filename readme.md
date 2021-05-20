@@ -61,3 +61,4 @@ Mage eyes focus on harnessing the powers of their eyestalks. This caste of behol
 - v1.7.7 Fix starting rings. Improve quest information about growth. Fix alchemist golem tile.
 - v1.7.8 Add a ring slot to replace the one lost by the quiver.
 - v1.7.9  Re-fix beholder tile update on growth. When you change faction via your Cloak ability, the faction of your summons change with it. Take out T_ARMOUR_TRAINING = 2 from Beholder race definition, that should be class based.
+- v1.7.10 Normalize talent levels (.0 or .3).
