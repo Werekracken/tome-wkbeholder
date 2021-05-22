@@ -121,7 +121,7 @@ newTalent{
 		local weapon_atk = getTentacle(self).atk
 		local weapon_apr = getTentacle(self).apr
 		local weapon_crit = getTentacle(self).physcrit
-		return ([[Attempt to strike those nearby with your tentacles.
+		return ([[You passively strike a foe each turn if able. This attack will avoid hitting dazed or sleeping targets.
 
 		Current Tentacle Slap Stats
 		Base Power: %0.2f - %0.2f
@@ -148,6 +148,12 @@ newTalent{
 	getBaseCrit = function(self, t) return self:combatTalentSpellDamage(t, 0, 15) end,
 	getDamage = function(self, t) return self:getTalentLevel(t) * 10 end,
 	getPercentInc = function(self, t) return math.sqrt(self:getTalentLevel(t) / 5) / 2 end,
+	on_learn = function(self, t)
+		self:learnTalent(self.T_USE_TENTACLES, true, nil, {no_unlearn=true})
+	end,
+	on_unlearn = function(self, t)
+		self:unlearnTalent(self.T_USE_TENTACLES, true, nil, {no_unlearn=true})
+	end,
 	info = function(self, t)
 		local damage = t.getDamage(self, t)
 		local inc = t.getPercentInc(self, t)
@@ -156,7 +162,7 @@ newTalent{
 		local weapon_atk = getTentacle(self).atk
 		local weapon_apr = getTentacle(self).apr
 		local weapon_crit = getTentacle(self).physcrit
-		return ([[You passively strike a foe each turn if able. This attack will avoid hitting dazed or sleeping targets.
+		return ([[You passively use a tentacle to strike a foe each turn if able. This attack will avoid hitting dazed or sleeping targets.
 		Increases Physical Power by %d, and increases weapon damage by %d%% when using your tentacles.
 		The base power, Accuracy, Armour penetration, and critical strike chance of the weapon will scale with your Spellpower.
 

@@ -65,6 +65,7 @@ Changelog
 - v1.7.10 Normalize talent levels (.0 or .3).
 - v1.7.11 Fix Absorb Magic so you can only drain items whose material level is equal or higher than your growth stage (it wasn't being applied to unique and rare items).
 - v1.7.12 Fix the Draining Gaze map effect so you can see the area of effect of your gaze.
+- v1.7.13 Take the innate Use Tentacles off of non-Mage Eye Beholders and instead give them Tentacle Combat generic tree unlocked at 1.0 mastery (to help make up for not being able to wear most gear).
 ]]
 overload = true
 superload = true

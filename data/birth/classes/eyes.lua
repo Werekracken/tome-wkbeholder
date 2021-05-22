@@ -50,6 +50,7 @@ newBirthDescriptor{
 		T_FLAME_LASER = 1,
 		T_FROST_LASER = 1,
 		T_LIGHTNING_LASER = 1,
+		T_TENTACLE_MASTERY = 1,
 	},
 }
 
