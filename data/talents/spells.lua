@@ -351,9 +351,11 @@ function purgeGazeGrids(self, type)
 
 		for i, eff in ipairs(game.level.map.effects) do
 			if (string.find(eff:getName(), "MANADRAIN_GAZE") or string.find(eff:getName(), "PARALYZING_GAZE")) and eff.src == self then
-				kill_list_gs[#kill_list_gs+1]=i end
+				kill_list_gs[#kill_list_gs+1]=i
+			end
 			if string.find(eff:getName(), "LIFE_LEECH") and eff.src == self then
-				kill_list_ps[#kill_list_ps+1]=i end
+				kill_list_ps[#kill_list_ps+1]=i
+			end
 		end
 
 		for i = #kill_list_gs, 1, -1 do --Run through the list in reverse as list order will be altered
