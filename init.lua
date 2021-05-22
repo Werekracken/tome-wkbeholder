@@ -2,7 +2,7 @@ long_name = "Werekracken's Beholder Fork"
 short_name = "wkbeholder"
 for_module = "tome"
 version = { 1, 7, 2 }
-addon_version = {1,7,11}
+addon_version = {1,7,12}
 weight = 100
 author = {"Werekracken"}
 tags = {"Beholder", "Class", "Race", "Monster", "Eyes", "Lasers", "Tentacles"}
@@ -64,6 +64,7 @@ Changelog
 - v1.7.9  Re-fix beholder tile update on growth. When you change faction via your Cloak ability, the faction of your summons change with it. Take out T_ARMOUR_TRAINING = 2 from Beholder race definition, that should be class based.
 - v1.7.10 Normalize talent levels (.0 or .3).
 - v1.7.11 Fix Absorb Magic so you can only drain items whose material level is equal or higher than your growth stage (it wasn't being applied to unique and rare items).
+- v1.7.12 Fix the Draining Gaze map effect so you can see the area of effect of your gaze.
 ]]
 overload = true
 superload = true
