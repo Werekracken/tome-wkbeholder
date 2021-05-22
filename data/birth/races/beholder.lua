@@ -45,6 +45,7 @@ newBirthDescriptor{
 	power_source = {arcane=true},
 	talents_types = {
 		["race/beholder"] ={true, 0.3},
+		["technique/tentacle-combat"]={true, 0.0},
 	},
 	copy = {
 		life_rating = 13,
@@ -92,8 +93,6 @@ newBirthDescriptor{
 	talents = {
 		T_MAGEEYE_DEVOUR = 1,
 		T_BEHOLDER_CLOAKING = 1,
-		T_USE_TENTACLES = 1,
-		T_TENTACLE_MASTERY = 1,
 	},
 	random_escort_possibilities = { {"tier1.1", 1, 2}, {"tier1.2", 1, 2}, {"daikara", 1, 2}, {"old-forest", 1, 4}, {"dreadfell", 1, 8}, {"reknor", 1, 2}, },
 	body = {FINGER=8,LITE=1,HEAD=1,NECK=1,TOOL=1,MAINHAND=1,OFFHAND=1,QUIVER=1,FEET="0",BODY="0",BELT="0",HANDS="0",CLOAK="0"},

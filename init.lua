@@ -2,7 +2,7 @@ long_name = "Werekracken's Beholder Fork"
 short_name = "wkbeholder"
 for_module = "tome"
 version = { 1, 7, 2 }
-addon_version = {1,7,12}
+addon_version = {1,7,13}
 weight = 100
 author = {"Werekracken"}
 tags = {"Beholder", "Class", "Race", "Monster", "Eyes", "Lasers", "Tentacles"}
@@ -11,25 +11,28 @@ description = [[This addon is a fork of the Beholder (Eye Fix) (https://te4.org/
 
 Adds Beholders as a playable race and the Mage Eye as a Beholder only class.
 
+Nekarcos's Quality of Life 07: Visible Size Categories addon is recommended in conjunction with beholders because it's fun to see their size change as they grow.
+
 https://github.com/Werekracken/tome-wkbeholder
 
 ---
 Beholder race
 
-Beholders resemble floating orbs of flesh with large mouths, a single central eye, and lots of smaller eyestalks on top with deadly magical powers. Instead of gaining category points as they level, they must absorb energy to grow. They have access to special eye beam abilities, but cannot wear most equipment.
+Beholders resemble floating orbs of flesh with large mouths, a single central eye, and lots of smaller eyestalks on top with deadly magical powers. Instead of gaining category points as they level, they must absorb energy from arcane items to grow. They cannot wear most equipment, but have lots of tentacles and eyes.
 
 -2 Strength, +2 Dexterity, +0 Constitution, +3 Magic, +4 Willpower, +2 Cunning
 +10% Lightning, Fire, and Cold resist
 -20% movement speed
 
-Race tree
+Race trees
 
 - race/beholder: Basic abilities common to all Beholders.
+- technique/tentacle-combat: Strike nearby foes with your tentacles.
 
 ---
 Mage Eye class
 
-Mage eyes focus on harnessing the powers of their eyestalks. This caste of beholder can absorb power from arcane objects.
+Mage eyes focus on harnessing the powers of their eyestalks.
 
 +6 Magic, +3 Willpower
 
@@ -37,10 +40,14 @@ Generic trees
 
 - spell/aegis
 - spell/divination
+- spell/conveyance
+- cunning/survival (locked)
 - technique/tentacle-combat: Strike nearby foes with your tentacles
 
 Class trees
 
+- spell/phantasm (locked)
+- spell/meta
 - spell/fire-eye: Flame eye abilities
 - spell/frost-eye: Frost eye abilities
 - spell/lightning-eye: Lightning eye abilities
@@ -65,6 +72,7 @@ Changelog
 - v1.7.10 Normalize talent levels (.0 or .3).
 - v1.7.11 Fix Absorb Magic so you can only drain items whose material level is equal or higher than your growth stage (it wasn't being applied to unique and rare items).
 - v1.7.12 Fix the Draining Gaze map effect so you can see the area of effect of your gaze.
+- v1.7.13 Take the innate Use Tentacles off of non-Mage Eye Beholders and give them Tentacle Combat generic tree unlocked at 1.0 mastery (to help make up for not being able to wear most gear), and make Channel Mastery useful for classes other than Mage Eye. Fix error when trying to unlearn Tentacle Mastery. Add some base game spell talent trees to Mage Eye to keep up with the times (more options). Fix log lines for Manadrain Gaze effect damage. Add class icons from Rexocorum for Mage Eye.
 ]]
 overload = true
 superload = true

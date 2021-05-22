@@ -31,15 +31,21 @@ newBirthDescriptor{
 	not_on_random_boss = true,
 	power_source = {arcane=true},
 	talents_types = {
+		--generic
+		["cunning/survival"]={false, 0},
+		["spell/aegis"]={true, 0.3},
+		["spell/conveyance"]={true, 0.0},
+		["spell/divination"]={true, 0.3},
+		["technique/tentacle-combat"]={true, 0.3},
+		--class
+		["spell/phantasm"]={false, 0.0},
+		["spell/meta"]={true, 0.0},
 		["spell/central-eye"] = {true, 0.3},
 		["spell/fire-eye"] = {true, 0.3},
 		["spell/frost-eye"] = {true, 0.3},
 		["spell/lightning-eye"] = {true, 0.3},
 		["spell/death-eye"] = {false, 0.3},
 		["spell/tri-beam"] = {false, 0.3},
-		["spell/aegis"]={true, 0.3},
-		["spell/divination"]={true, 0.3},
-		["technique/tentacle-combat"]={true, 0.3},
 	},
 	copy_add = {
 		life_rating = -4,
@@ -50,6 +56,7 @@ newBirthDescriptor{
 		T_FLAME_LASER = 1,
 		T_FROST_LASER = 1,
 		T_LIGHTNING_LASER = 1,
+		T_TENTACLE_MASTERY = 1,
 	},
 }
 

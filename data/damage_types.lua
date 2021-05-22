@@ -104,7 +104,7 @@ newDamageType{
 }
 
 newDamageType{
-	name = "manadrain_gaze", type = "MANADRAIN_GAZE",
+	name = "draining gaze", type = "MANADRAIN_GAZE",
 	projector = function(src, x, y, type, dam)
 		local target = game.level.map(x, y, Map.ACTOR)
 
@@ -287,16 +287,6 @@ newDamageType{
 		if target then target.energy.mod = target.energy.mod * (100-dam.projectile_slow) / 100 end
 		local tar = game.level.map(x, y, Map.ACTOR)
 		if tar then tar:setEffect(tar.EFF_THWARTED_BY_THE_GAZE, 2, {stun_resist_pen=dam.stun_resist_pen}) end
-	end
-}
-
-newDamageType{
-	name = "manadrain_gaze_plus", type = "MANADRAIN_GAZE_PLUS",
-	projector = function(src, x, y, type, dam)
-		local target = game.level.map(x, y, Map.ACTOR)
-		if target and target ~=src and not target:hasEffect(target.EFF_MASTERED_THE_GAZE) then
-			DamageType:get(DamageType.SILENCE).projector(src, x, y, DamageType.SILENCE, dam)
-		end
 	end
 }
 

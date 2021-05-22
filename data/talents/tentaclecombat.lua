@@ -34,22 +34,26 @@ function getTentacle(self)
 		local t = self:getTalentFromId(self.T_CHANNEL_MASTERY)
 		local possible_types = {}
 		local cnt =0
-		if self:knowTalent(self.T_FROST_MASTERY) then
+		table.insert(possible_types,DamageType.PHYSICAL)
+		cnt=cnt+1
+
+		if self:isTalentActive(self.T_FROST_MASTERY) then
 			table.insert(possible_types,DamageType.COLD)
 			cnt=cnt+1
 		end
-		if self:knowTalent(self.T_DEATH_MASTERY) then
+		if self:isTalentActive(self.T_DEATH_MASTERY) then
 			table.insert(possible_types,DamageType.DARKNESS)
 			cnt=cnt+1
 		end
-		if self:knowTalent(self.T_FIRE_MASTERY) then
+		if self:isTalentActive(self.T_FIRE_MASTERY) then
 			table.insert(possible_types,DamageType.FIRE)
 			cnt=cnt+1
 		end
-		if self:knowTalent(self.T_LIGHTNING_MASTERY) then
+		if self:isTalentActive(self.T_LIGHTNING_MASTERY) then
 			table.insert(possible_types,DamageType.LIGHTNING)
 			cnt=cnt+1
 		end
+
 		if cnt>0 then
 			combat.burst_on_hit = { [rng.table(possible_types)] = t.getDamage(self, t) }
 			combat.burst_on_crit = { [rng.table(possible_types)] = t.getDamageCrit(self, t) }
@@ -121,17 +125,7 @@ newTalent{
 		local weapon_atk = getTentacle(self).atk
 		local weapon_apr = getTentacle(self).apr
 		local weapon_crit = getTentacle(self).physcrit
-		return ([[Attempt to strike those nearby with your tentacles.
-
-		Current Tentacle Slap Stats
-		Base Power: %0.2f - %0.2f
-		Uses Stats: 30%% Mag, 30%% Wil
-		Damage Type: Physical
-		Accuracy is based on willpower for this weapon.
-		Accuracy Bonus: +%d
-		Armour Penetration: +%d
-		Physical Crit. Chance: +%d]]):
-		format(weapon_damage, weapon_range, weapon_atk, weapon_apr, weapon_crit)
+		return ([[You passively strike a foe each turn if able. This attack will avoid hitting dazed or sleeping targets.]]):format()
 	end,
 }
 
@@ -148,6 +142,12 @@ newTalent{
 	getBaseCrit = function(self, t) return self:combatTalentSpellDamage(t, 0, 15) end,
 	getDamage = function(self, t) return self:getTalentLevel(t) * 10 end,
 	getPercentInc = function(self, t) return math.sqrt(self:getTalentLevel(t) / 5) / 2 end,
+	on_learn = function(self, t)
+		self:learnTalent(self.T_USE_TENTACLES, true, nil, {no_unlearn=true})
+	end,
+	on_unlearn = function(self, t)
+		self:unlearnTalent(self.T_USE_TENTACLES)
+	end,
 	info = function(self, t)
 		local damage = t.getDamage(self, t)
 		local inc = t.getPercentInc(self, t)
@@ -156,7 +156,7 @@ newTalent{
 		local weapon_atk = getTentacle(self).atk
 		local weapon_apr = getTentacle(self).apr
 		local weapon_crit = getTentacle(self).physcrit
-		return ([[You passively strike a foe each turn if able. This attack will avoid hitting dazed or sleeping targets.
+		return ([[You passively use a tentacle to strike a foe each turn if able. This attack will avoid hitting dazed or sleeping targets.
 		Increases Physical Power by %d, and increases weapon damage by %d%% when using your tentacles.
 		The base power, Accuracy, Armour penetration, and critical strike chance of the weapon will scale with your Spellpower.
 
@@ -216,7 +216,7 @@ newTalent{
 		local range = self:getTalentRange(t)
 		return ([[Strike and disarm your target from up to %d squares away for %d%% tentacle damage and a disarm duration of %d turns. If the attack hits, you attempt to drag your neutralized target next to you.
 
-			Disarm chance increases with your accuracy.
+		Disarm chance increases with your accuracy.
 		Learning this talent increases your accuracy with your tentacles by %d.]]):format(range, damage* 100,duration,attack)
 	end,
 }
@@ -276,8 +276,9 @@ newTalent{
 		local peffect = t.getPosionEffect(self, t)
 		local range = self:getTalentRange(t)
 		return ([[Assail your foe with a terrible, spiny tentacle. Attack for %d%% tentacle damage and infect your target with a toxin that deals %0.2f nature damage each turn for 6 turns while reducing healing by %d%%. With a successful hit, you also pull yourself into close combat range with your foe, cutting off escape routes.
-		Learning this talent causes your tentacles to deal %d additional physical damage.
-		The poison damage and bonus physical damage scale with your Spellpower.]]):format(damage* 100,range,pdamage/6,peffect,project)
+		The poison damage and bonus physical damage scale with your Spellpower.
+
+		Spiny Tentacles also produce a second tentacle attack from your Use Tentacles skill for %d physical damage.]]):format(damage* 100,range,pdamage/6,peffect,project)
 	end,
 }
 
@@ -286,29 +287,19 @@ newTalent{
 	type = {"technique/tentacle-combat", 4},
 	points = 5,
 	mode="passive",
-	require = { stat = { wil=function(level) return 30 + level * 2 end,mag=function(level) return 30 + level * 2 end },
-		special = { desc="Know at least one elemental mastery",
-		fct=function(self, t)
-		local cnt =0
-		if self:knowTalent(self.T_FROST_MASTERY) then
-		cnt = cnt+1
-		end
-		if self:knowTalent(self.T_DEATH_MASTERY) then
-		cnt = cnt+1
-		end
-		if self:knowTalent(self.T_FIRE_MASTERY) then
-		cnt = cnt+1
-		end
-		if self:knowTalent(self.T_LIGHTNING_MASTERY) then
-		cnt = cnt+1
-		end
-		return cnt>0 end},},
+	require = {
+		stat = {
+			wil=function(level) return 30 + level * 2 end,
+			mag=function(level) return 30 + level * 2 end,
+		},
+	},
 	getDamage = function(self, t) return self:combatTalentSpellDamage(t, 20, 60) end,
 	getDamageCrit = function(self, t) return self:combatTalentSpellDamage(t, 100, 200) end,
 	info = function(self, t)
 		local damage =t.getDamage(self, t)
 		local damagecrit =t.getDamageCrit(self, t)
-		return ([[Channels the effect of your elemental masteries to give your tentacle strikes %d burst damage on hit (radius 1) and %d burst damage on crit (radius 2).
-		The type of damage depends on what masteries are active and the bonus damage scales with your Spellpower.]]):format(damage,damagecrit)
+		return ([[Give your tentacle strikes %d burst damage on hit (radius 1) and %d burst damage on crit (radius 2).
+		The type of damage done is randomly chosen between physical and the element type for each eye mastery that is active.
+		The bonus damage scales with your Spellpower.]]):format(damage,damagecrit)
 	end,
 }
