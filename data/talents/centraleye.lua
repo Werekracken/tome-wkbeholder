@@ -167,9 +167,10 @@ newTalent{
 			-- self:getTalentRange(t), {delta_x=dx, delta_y=dy}, grids
 			self:getTalentRange(t), dir, self:getTalentTarget(t).eye_angle or 55,
 			--overlay
-			engine.Entity.new{alpha=0, display='', back_color=colors.VIOLET},
+			engine.Entity.new{alpha=20, display='', back_color=colors.VIOLET},
 			--update_fct, selffire, friendlyfire
-			nil, 0, 0)
+			nil, 0, 0
+		)
 
 		p.effect.grids = grids
 

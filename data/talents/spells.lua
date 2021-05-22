@@ -350,9 +350,9 @@ function purgeGazeGrids(self, type)
 		--if type ~= "manadrain" or type ~= "paralyzing" then print("Bad gaze type sent to purgeGazeGrids!") end
 
 		for i, eff in ipairs(game.level.map.effects) do
-			if (string.find(eff:getName(), "manadrain_gaze") or string.find(eff:getName(), "paralyzing_gaze")) and eff.src == self then
+			if (string.find(eff:getName(), "MANADRAIN_GAZE") or string.find(eff:getName(), "PARALYZING_GAZE")) and eff.src == self then
 				kill_list_gs[#kill_list_gs+1]=i end
-			if string.find(eff:getName(), "life_leech") and eff.src == self then
+			if string.find(eff:getName(), "LIFE_LEECH") and eff.src == self then
 				kill_list_ps[#kill_list_ps+1]=i end
 		end
 
