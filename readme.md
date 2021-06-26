@@ -72,3 +72,4 @@ Mage eyes focus on harnessing the powers of their eyestalks.
 - v1.7.11 Fix Absorb Magic so you can only drain items whose material level is equal or higher than your growth stage (it wasn't being applied to unique and rare items).
 - v1.7.12 Fix the Draining Gaze map effect so you can see the area of effect of your gaze.
 - v1.7.13 Take the innate Use Tentacles off of non-Mage Eye Beholders and give them Tentacle Combat generic tree unlocked at 1.0 mastery (to help make up for not being able to wear most gear), and make Channel Mastery useful for classes other than Mage Eye. Fix error when trying to unlearn Tentacle Mastery. Add some base game spell talent trees to Mage Eye to expand the options. Fix log lines for Manadrain Gaze effect damage. Add class icons from Rexocorum for Mage Eye.
+- v1.7.14 Fix for compatibility with Zizzo's Passive Cooldowns.
