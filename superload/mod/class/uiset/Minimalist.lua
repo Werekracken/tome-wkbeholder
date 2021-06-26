@@ -125,4 +125,8 @@ function _M:displayBuffs(scale, bx, by)
 			self:computePadding("buffs", bx, by, bx + hs, by + y * scale + hs)
 		end
 	end
+
+	if self.drawPassiveCooldownTrackers then
+		self:drawPassiveCooldownTrackers(scale, bx, by)
+	end
 end
