@@ -225,15 +225,15 @@ mage_stage_5 = function(self)
 	game.level.map:particleEmitter(self.x, self.y, 1, "demon_teleport")
 end
 
-newTalentType{  allow_random=true, type="spell/fire-eye", name = "fire-eye", description = "Flame eye abilities" }
-newTalentType{  allow_random=true, type="spell/frost-eye", name = "frost-eye", description = "Frost eye abilities" }
-newTalentType{  allow_random=true, type="spell/lightning-eye", name = "lightning-eye", description = "Lightning eye abilities" }
-newTalentType{  allow_random=true, type="spell/death-eye", name = "death-eye", description = "Death eye abilities\n\n#GOLD##BOLD#You must reach the 5th beholder growth stage to be able to learn this talent tree", beholder_growth_req = 5}
-newTalentType{  allow_random=true, type="spell/tri-beam", name = "tri-beam", description = "Refocus your central eye's energies\n\n#GOLD##BOLD#You must reach the 3rd beholder growth stage to be able to learn this talent tree.", beholder_growth_req = 3 }
-newTalentType{  allow_random=true, type="spell/central-eye", name = "central-eye", description = "Central eye anti-magic abilities" }
-newTalentType{ type="race/beholder-other", name = "beholder-other", generic = true, description = "Special beholder talents." }
-newTalentType{ type="race/beholder", name = "beholder", generic = true, description = "Basic abilities common to all Beholders." }
-newTalentType{ type="technique/tentacle-combat", name = "tentacle-combat", generic = true, description = "Strike nearby foes with your tentacles." }
+newTalentType{ allow_random=false, type="spell/fire-eye", name = "fire-eye", description = "Flame eye abilities" }
+newTalentType{ allow_random=false, type="spell/frost-eye", name = "frost-eye", description = "Frost eye abilities" }
+newTalentType{ allow_random=false, type="spell/lightning-eye", name = "lightning-eye", description = "Lightning eye abilities" }
+newTalentType{ allow_random=false, type="spell/death-eye", name = "death-eye", description = "Death eye abilities\n\n#GOLD##BOLD#You must reach the 5th beholder growth stage to be able to learn this talent tree", beholder_growth_req = 5}
+newTalentType{ allow_random=false, type="spell/tri-beam", name = "tri-beam", description = "Refocus your central eye's energies\n\n#GOLD##BOLD#You must reach the 3rd beholder growth stage to be able to learn this talent tree.", beholder_growth_req = 3 }
+newTalentType{ allow_random=false, type="spell/central-eye", name = "central-eye", description = "Central eye anti-magic abilities" }
+newTalentType{ allow_random=false, type="race/beholder-other", name = "beholder-other", generic = true, description = "Special beholder talents." }
+newTalentType{ allow_random=false, type="race/beholder", name = "beholder", generic = true, description = "Basic abilities common to all Beholders." }
+newTalentType{ allow_random=false, type="technique/tentacle-combat", name = "tentacle-combat", generic = true, description = "Strike nearby foes with your tentacles." }
 -- newTalentType{ type="technique/ravenous-maw", name = "ravenous-maw", description = "Assail foes with your enormous maw and devour them whole, arcane energies and all." }
 
 spells_req1 = {
