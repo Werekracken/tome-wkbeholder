@@ -312,6 +312,8 @@ newTalent{
 		self.old_faction_cloak = self.faction
 		if self.descriptor.world == "Orcs" then
 			new_faction = "kruk-pride"
+		elseif self.descriptor.world == "Demons" then
+			new_faction = "fearscape"
 		else
 			new_faction = "allied-kingdoms"
 		end
@@ -372,22 +374,18 @@ newTalent{
 	short_name = "MAGEEYE_DEVOUR",
 	name = "Absorb Magic",
 	type = {"race/beholder-other", 1},
-	cooldown = 10,
 	no_npc_use = true,
 	no_unlearn_last = true,
-	--get_growth_points = function(self, t, mlevel,unique)
-	--	return math.max((.5 * (mlevel - self.growth_stage)+ 1) * unique,.5)
-	--end,
 	is_spell=true,
 	action = function(self, t)
 		local d d = self:showInventory("Drain which item?", self:getInven("INVEN"), function(o) return o.power_source and o.power_source.arcane and o.material_level and o.material_level>=self.growth_stage and not o.is_tinker end,
 
 		function(o, item)
-			local amt = 1 	--t.get_growth_points(self, t,o.material_level,unique)
+			local amt = 1
 			if o.material_level==self.growth_stage then
 				amt=0.5
 			end
-			local amts_by_tier = {3, 3, 4, 5, 7} --I'll be adjusting this as I tune up the difficulty of evolving
+			local amts_by_tier = {3, 3, 4, 5, 7}
 			if o.unique then
 				if o.godslayer then amt = 500
 				elseif o.legendary then amt = math.ceil(amts_by_tier[o.material_level]/5 * 8)
@@ -398,7 +396,6 @@ newTalent{
 				amt = amt*({3, 3, 4, 4, 5})[o.material_level]
 			end
 			self:removeObject(self:getInven("INVEN"), item)
-			--local amt = t.energy_per_turn(self, t)
 			self:attr("growth_points",amt)
 			if self.growth_stage == 1 and self.growth_points>=self.growth_curve[1] then
 				mage_stage_2(self)

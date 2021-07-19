@@ -2,7 +2,7 @@ long_name = "Werekracken's Beholder Fork"
 short_name = "wkbeholder"
 for_module = "tome"
 version = { 1, 7, 2 }
-addon_version = {1,7,15}
+addon_version = {1,7,16}
 weight = 100
 author = {"Werekracken"}
 tags = {"Beholder", "Class", "Race", "Monster", "Eyes", "Lasers", "Tentacles"}
@@ -75,6 +75,7 @@ Changelog
 - v1.7.13 Take the innate Use Tentacles off of non-Mage Eye Beholders and give them Tentacle Combat generic tree unlocked at 1.0 mastery (to help make up for not being able to wear most gear), and make Channel Mastery useful for classes other than Mage Eye. Fix error when trying to unlearn Tentacle Mastery. Add some base game spell talent trees to Mage Eye to keep up with the times (more options). Fix log lines for Manadrain Gaze effect damage. Add class icons from Rexocorum for Mage Eye.
 - v1.7.14 Fix for compatibility with Zizzo's Passive Cooldowns.
 - v1.7.15 Make Absorb Magic and Beholder's Cloak of Deception not unlearnable so that if auto-assign at birth is disabled new chars will still get them.
+- v1.7.16 Fix faction when playing Recaiden's Demons campaign. Remove cooldown on Absorb Magic.
 ]]
 overload = true
 superload = true
