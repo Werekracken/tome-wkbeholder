@@ -306,6 +306,7 @@ newTalent{
 	mode = "sustained", no_sustain_autoreset = true,
 	no_energy = true,
 	cooldown = 0,
+	no_unlearn_last = true,
 	is_spell=true,
 	activate = function(self, who)
 		self.old_faction_cloak = self.faction
@@ -373,6 +374,7 @@ newTalent{
 	type = {"race/beholder-other", 1},
 	cooldown = 10,
 	no_npc_use = true,
+	no_unlearn_last = true,
 	--get_growth_points = function(self, t, mlevel,unique)
 	--	return math.max((.5 * (mlevel - self.growth_stage)+ 1) * unique,.5)
 	--end,
