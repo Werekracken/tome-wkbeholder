@@ -211,13 +211,13 @@ newTalent{
 	end,
 	info = function(self, t)
 		local duration = t.getDuration(self, t)
-		local damage = t.getDamage(self, t)
+		local damage = t.getDamage(self, t) * 100
 		local attack = t.getAttack(self, t)
 		local range = self:getTalentRange(t)
 		return ([[Strike and disarm your target from up to %d squares away for %d%% tentacle damage and a disarm duration of %d turns. If the attack hits, you attempt to drag your neutralized target next to you.
 
 		Disarm chance increases with your accuracy.
-		Learning this talent increases your accuracy with your tentacles by %d.]]):format(range, damage* 100,duration,attack)
+		Learning this talent increases your accuracy with your tentacles by %d.]]):format(range, damage, duration, attack)
 	end,
 }
 
@@ -271,14 +271,13 @@ newTalent{
 	end,
 	info = function(self, t)
 		local project = t.getProject(self, t)
-		local damage =t.getDamage(self, t)
-		local pdamage =t.getPosionDamage(self, t)
+		local damage =t.getDamage(self, t) * 100
+		local pdamage =t.getPosionDamage(self, t) / 6
 		local peffect = t.getPosionEffect(self, t)
-		local range = self:getTalentRange(t)
 		return ([[Assail your foe with a terrible, spiny tentacle. Attack for %d%% tentacle damage and infect your target with a toxin that deals %0.2f nature damage each turn for 6 turns while reducing healing by %d%%. With a successful hit, you also pull yourself into close combat range with your foe, cutting off escape routes.
 		The poison damage and bonus physical damage scale with your Spellpower.
 
-		Spiny Tentacles also produce a second tentacle attack from your Use Tentacles skill for %d physical damage.]]):format(damage* 100,range,pdamage/6,peffect,project)
+		Spiny Tentacles also produce a second tentacle attack from your Use Tentacles skill for %d physical damage.]]):format(damage, pdamage, peffect, project)
 	end,
 }
 
